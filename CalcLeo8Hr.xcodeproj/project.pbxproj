@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		72CED7B82AD66D23007DF702 /* CalcLeo8HrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CED7B72AD66D23007DF702 /* CalcLeo8HrApp.swift */; };
+		72CED7BA2AD66D23007DF702 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CED7B92AD66D23007DF702 /* ContentView.swift */; };
+		72CED7BC2AD66D24007DF702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72CED7BB2AD66D24007DF702 /* Assets.xcassets */; };
+		72CED7BF2AD66D24007DF702 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72CED7BE2AD66D24007DF702 /* Preview Assets.xcassets */; };
+		72CED7C92AD66D24007DF702 /* CalcLeo8HrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CED7C82AD66D24007DF702 /* CalcLeo8HrTests.swift */; };
+		72CED7D32AD66D24007DF702 /* CalcLeo8HrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CED7D22AD66D24007DF702 /* CalcLeo8HrUITests.swift */; };
+		72CED7D52AD66D24007DF702 /* CalcLeo8HrUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CED7D42AD66D24007DF702 /* CalcLeo8HrUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		72CED7C52AD66D24007DF702 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72CED7AC2AD66D23007DF702 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72CED7B32AD66D23007DF702;
+			remoteInfo = CalcLeo8Hr;
+		};
+		72CED7CF2AD66D24007DF702 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72CED7AC2AD66D23007DF702 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72CED7B32AD66D23007DF702;
+			remoteInfo = CalcLeo8Hr;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		72CED7B42AD66D23007DF702 /* CalcLeo8Hr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalcLeo8Hr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72CED7B72AD66D23007DF702 /* CalcLeo8HrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcLeo8HrApp.swift; sourceTree = "<group>"; };
+		72CED7B92AD66D23007DF702 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		72CED7BB2AD66D24007DF702 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72CED7BE2AD66D24007DF702 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		72CED7C42AD66D24007DF702 /* CalcLeo8HrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalcLeo8HrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		72CED7C82AD66D24007DF702 /* CalcLeo8HrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcLeo8HrTests.swift; sourceTree = "<group>"; };
+		72CED7CE2AD66D24007DF702 /* CalcLeo8HrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalcLeo8HrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		72CED7D22AD66D24007DF702 /* CalcLeo8HrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcLeo8HrUITests.swift; sourceTree = "<group>"; };
+		72CED7D42AD66D24007DF702 /* CalcLeo8HrUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcLeo8HrUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		72CED7B12AD66D23007DF702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CED7C12AD66D24007DF702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CED7CB2AD66D24007DF702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		72CED7AB2AD66D23007DF702 = {
+			isa = PBXGroup;
+			children = (
+				72CED7B62AD66D23007DF702 /* CalcLeo8Hr */,
+				72CED7C72AD66D24007DF702 /* CalcLeo8HrTests */,
+				72CED7D12AD66D24007DF702 /* CalcLeo8HrUITests */,
+				72CED7B52AD66D23007DF702 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		72CED7B52AD66D23007DF702 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				72CED7B42AD66D23007DF702 /* CalcLeo8Hr.app */,
+				72CED7C42AD66D24007DF702 /* CalcLeo8HrTests.xctest */,
+				72CED7CE2AD66D24007DF702 /* CalcLeo8HrUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		72CED7B62AD66D23007DF702 /* CalcLeo8Hr */ = {
+			isa = PBXGroup;
+			children = (
+				72CED7B72AD66D23007DF702 /* CalcLeo8HrApp.swift */,
+				72CED7B92AD66D23007DF702 /* ContentView.swift */,
+				72CED7BB2AD66D24007DF702 /* Assets.xcassets */,
+				72CED7BD2AD66D24007DF702 /* Preview Content */,
+			);
+			path = CalcLeo8Hr;
+			sourceTree = "<group>";
+		};
+		72CED7BD2AD66D24007DF702 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				72CED7BE2AD66D24007DF702 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		72CED7C72AD66D24007DF702 /* CalcLeo8HrTests */ = {
+			isa = PBXGroup;
+			children = (
+				72CED7C82AD66D24007DF702 /* CalcLeo8HrTests.swift */,
+			);
+			path = CalcLeo8HrTests;
+			sourceTree = "<group>";
+		};
+		72CED7D12AD66D24007DF702 /* CalcLeo8HrUITests */ = {
+			isa = PBXGroup;
+			children = (
+				72CED7D22AD66D24007DF702 /* CalcLeo8HrUITests.swift */,
+				72CED7D42AD66D24007DF702 /* CalcLeo8HrUITestsLaunchTests.swift */,
+			);
+			path = CalcLeo8HrUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		72CED7B32AD66D23007DF702 /* CalcLeo8Hr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72CED7D82AD66D24007DF702 /* Build configuration list for PBXNativeTarget "CalcLeo8Hr" */;
+			buildPhases = (
+				72CED7B02AD66D23007DF702 /* Sources */,
+				72CED7B12AD66D23007DF702 /* Frameworks */,
+				72CED7B22AD66D23007DF702 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CalcLeo8Hr;
+			productName = CalcLeo8Hr;
+			productReference = 72CED7B42AD66D23007DF702 /* CalcLeo8Hr.app */;
+			productType = "com.apple.product-type.application";
+		};
+		72CED7C32AD66D24007DF702 /* CalcLeo8HrTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72CED7DB2AD66D24007DF702 /* Build configuration list for PBXNativeTarget "CalcLeo8HrTests" */;
+			buildPhases = (
+				72CED7C02AD66D24007DF702 /* Sources */,
+				72CED7C12AD66D24007DF702 /* Frameworks */,
+				72CED7C22AD66D24007DF702 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72CED7C62AD66D24007DF702 /* PBXTargetDependency */,
+			);
+			name = CalcLeo8HrTests;
+			productName = CalcLeo8HrTests;
+			productReference = 72CED7C42AD66D24007DF702 /* CalcLeo8HrTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		72CED7CD2AD66D24007DF702 /* CalcLeo8HrUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72CED7DE2AD66D24007DF702 /* Build configuration list for PBXNativeTarget "CalcLeo8HrUITests" */;
+			buildPhases = (
+				72CED7CA2AD66D24007DF702 /* Sources */,
+				72CED7CB2AD66D24007DF702 /* Frameworks */,
+				72CED7CC2AD66D24007DF702 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72CED7D02AD66D24007DF702 /* PBXTargetDependency */,
+			);
+			name = CalcLeo8HrUITests;
+			productName = CalcLeo8HrUITests;
+			productReference = 72CED7CE2AD66D24007DF702 /* CalcLeo8HrUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		72CED7AC2AD66D23007DF702 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					72CED7B32AD66D23007DF702 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					72CED7C32AD66D24007DF702 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 72CED7B32AD66D23007DF702;
+					};
+					72CED7CD2AD66D24007DF702 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 72CED7B32AD66D23007DF702;
+					};
+				};
+			};
+			buildConfigurationList = 72CED7AF2AD66D23007DF702 /* Build configuration list for PBXProject "CalcLeo8Hr" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 72CED7AB2AD66D23007DF702;
+			productRefGroup = 72CED7B52AD66D23007DF702 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				72CED7B32AD66D23007DF702 /* CalcLeo8Hr */,
+				72CED7C32AD66D24007DF702 /* CalcLeo8HrTests */,
+				72CED7CD2AD66D24007DF702 /* CalcLeo8HrUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		72CED7B22AD66D23007DF702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CED7BF2AD66D24007DF702 /* Preview Assets.xcassets in Resources */,
+				72CED7BC2AD66D24007DF702 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CED7C22AD66D24007DF702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CED7CC2AD66D24007DF702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		72CED7B02AD66D23007DF702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CED7BA2AD66D23007DF702 /* ContentView.swift in Sources */,
+				72CED7B82AD66D23007DF702 /* CalcLeo8HrApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CED7C02AD66D24007DF702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CED7C92AD66D24007DF702 /* CalcLeo8HrTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CED7CA2AD66D24007DF702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CED7D32AD66D24007DF702 /* CalcLeo8HrUITests.swift in Sources */,
+				72CED7D52AD66D24007DF702 /* CalcLeo8HrUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		72CED7C62AD66D24007DF702 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72CED7B32AD66D23007DF702 /* CalcLeo8Hr */;
+			targetProxy = 72CED7C52AD66D24007DF702 /* PBXContainerItemProxy */;
+		};
+		72CED7D02AD66D24007DF702 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72CED7B32AD66D23007DF702 /* CalcLeo8Hr */;
+			targetProxy = 72CED7CF2AD66D24007DF702 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		72CED7D62AD66D24007DF702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		72CED7D72AD66D24007DF702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		72CED7D92AD66D24007DF702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CalcLeo8Hr/Preview Content\"";
+				DEVELOPMENT_TEAM = 38TY4TU89G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coldpointblue.CalcLeo8Hr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		72CED7DA2AD66D24007DF702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CalcLeo8Hr/Preview Content\"";
+				DEVELOPMENT_TEAM = 38TY4TU89G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coldpointblue.CalcLeo8Hr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		72CED7DC2AD66D24007DF702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 38TY4TU89G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coldpointblue.CalcLeo8HrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalcLeo8Hr.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CalcLeo8Hr";
+			};
+			name = Debug;
+		};
+		72CED7DD2AD66D24007DF702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 38TY4TU89G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coldpointblue.CalcLeo8HrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalcLeo8Hr.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CalcLeo8Hr";
+			};
+			name = Release;
+		};
+		72CED7DF2AD66D24007DF702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 38TY4TU89G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coldpointblue.CalcLeo8HrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CalcLeo8Hr;
+			};
+			name = Debug;
+		};
+		72CED7E02AD66D24007DF702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 38TY4TU89G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coldpointblue.CalcLeo8HrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CalcLeo8Hr;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		72CED7AF2AD66D23007DF702 /* Build configuration list for PBXProject "CalcLeo8Hr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72CED7D62AD66D24007DF702 /* Debug */,
+				72CED7D72AD66D24007DF702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72CED7D82AD66D24007DF702 /* Build configuration list for PBXNativeTarget "CalcLeo8Hr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72CED7D92AD66D24007DF702 /* Debug */,
+				72CED7DA2AD66D24007DF702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72CED7DB2AD66D24007DF702 /* Build configuration list for PBXNativeTarget "CalcLeo8HrTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72CED7DC2AD66D24007DF702 /* Debug */,
+				72CED7DD2AD66D24007DF702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72CED7DE2AD66D24007DF702 /* Build configuration list for PBXNativeTarget "CalcLeo8HrUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72CED7DF2AD66D24007DF702 /* Debug */,
+				72CED7E02AD66D24007DF702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 72CED7AC2AD66D23007DF702 /* Project object */;
+}
