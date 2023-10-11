@@ -24,15 +24,39 @@ struct CalcColor {
     }
 }
 
+/// Main calculator view
 struct ContentView: View {
+    @State private var displayValue: String = "0"
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
+                DisplayView(displayValue: $displayValue)
+                    .frame(height: geometry.size.height * (1/6))
+                    .background(CalcColor.edgeDisplay(for: geometry.size))
+                
+                CalculatorButtonsView(displayValue: $displayValue, geometry: (width: geometry.size.width, height: geometry.size.height * (5/6)))
+            }
         }
-        .padding()
+    }
+}
+
+/// Calculator display screen
+struct DisplayView: View {
+    @Binding var displayValue: String
+    let numberFontSize = CGFloat(70)
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            Text(displayValue)
+                .font(.system(size: numberFontSize))
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .background(CalcColor.display)
+            Spacer(minLength: numberFontSize / 2)
+        }
+        .background(CalcColor.display)
+        .padding(1)
+        .border(CalcColor.display, width: 1)
     }
 }
 
@@ -102,10 +126,6 @@ struct CalculatorButtonView: View {
             .border(CalcColor.buttonBorder, width: 1)
         }
     }
-}
-
-#Preview {
-    ContentView()
 }
 
 #Preview {
