@@ -126,7 +126,17 @@ struct CalculatorButtonView: View {
     
     var body: some View {
         GeometryReader { geo in
-            Button(action: { displayValue = button.rawValue }) {
+            Button(action: {
+                do {
+                    try handleButtonPress(button: button)
+                } catch let error as GenericError {
+                    Logger.log(error.description, type: .error)
+                    displayValue = "Error"
+                } catch {
+                    Logger.log("An unexpected error occurred.", type: .error)
+                    displayValue = "Error"
+                }
+            }) {
                 ZStack {
                     backgroundColor
                     Text(button.rawValue)
@@ -137,6 +147,52 @@ struct CalculatorButtonView: View {
             .frame(width: geo.size.width, height: geo.size.height)
             .border(CalcColor.buttonBorder, width: 1)
         }
+    }
+    
+    // Briefly display an underscore and then remove it
+    private func flashIgnore() {
+        let currentDisplay = displayValue
+        displayValue = "_"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            displayValue = currentDisplay
+        }
+    }
+    
+    private func handleButtonPress(button: CalculatorButton) throws {
+        let notYetImplemented = " operation not implemented"
+        
+        // If "Error" is displayed, ignore all except for "AC"
+        guard displayValue != "Error" || displayValue == "Error" && button == .clear else {
+            flashIgnore()
+            return
+        }
+        
+        switch button {
+        case .clear:
+            displayValue = "0"
+        case .negate:
+            logInfo("Negate" + notYetImplemented)
+        case .bitcoin:
+            throw GenericError.invalidOperation("Bitcoin web call" + notYetImplemented)
+        case .divide, .multiply, .subtract, .add:
+            logInfo("Arithmetic" + notYetImplemented)
+        case .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
+            displayValue = (displayValue == "0") ? button.rawValue : displayValue + button.rawValue
+        case .zero:
+            if displayValue != "0" { displayValue += button.rawValue } else {
+                flashIgnore()
+            }
+        case .decimalPoint:
+            logInfo("Decimal point" + notYetImplemented)
+        case .equals:
+            logInfo("Equals" + notYetImplemented)
+        }
+    }
+    
+    private func logInfo(_ message: String) {
+#if DEBUG
+        Logger.log(message, type: .info)
+#endif
     }
 }
 
