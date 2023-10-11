@@ -30,13 +30,20 @@ struct ContentView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0) {
-                DisplayView(displayValue: $displayValue)
-                    .frame(height: geometry.size.height * (1/6))
-                    .background(CalcColor.edgeDisplay(for: geometry.size))
-                
-                CalculatorButtonsView(displayValue: $displayValue, geometry: (width: geometry.size.width, height: geometry.size.height * (5/6)))
-            }
+            calculatorLayout(geometry: geometry)
+        }
+    }
+    
+    /// Constructs the calculator layout
+    /// - Parameter geometry: GeometryProxy containing layout dimensions
+    /// - Returns: A VStack containing the display and button views
+    private func calculatorLayout(geometry: GeometryProxy) -> some View {
+        VStack(spacing: 0) {
+            DisplayView(displayValue: $displayValue)
+                .frame(height: geometry.size.height * (1/6))
+                .background(CalcColor.edgeDisplay(for: geometry.size))
+            
+            CalculatorButtonsView(displayValue: $displayValue, geometry: (width: geometry.size.width, height: geometry.size.height * (5/6)))
         }
     }
 }
