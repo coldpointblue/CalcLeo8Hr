@@ -34,11 +34,15 @@ struct ContentView: View {
     }
     
     private func calculatorLayout(geometry: GeometryProxy) -> some View {
-        VStack(spacing: 0) {
+        let buttonsView = CalculatorButtonsView(displayValue: $displayValue, geometry: geometry)
+        let totalRows = CGFloat(buttonsView.totalRows)
+        let displayHeight = geometry.size.height / (totalRows + 1)  // +1 for the display row
+
+        return VStack(spacing: 0) {
             DisplayView(displayValue: $displayValue)
-                .frame(height: geometry.size.height / 6)
+                .frame(height: displayHeight)
                 .background(CalcColor.edgeDisplay(for: geometry.size))
-            CalculatorButtonsView(displayValue: $displayValue, geometry: geometry)
+            buttonsView
         }
     }
 }
@@ -56,11 +60,12 @@ struct DisplayView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .background(CalcColor.display)
                 .padding(.trailing, indentRight)
-                .accessibilityIdentifier("displayValue") // For UI tests.
+                .accessibilityIdentifier("displayValue") // For UI tests
         }
         .background(CalcColor.display)
         .padding(1)
         .border(CalcColor.display, width: 1)
+        .minimumScaleFactor(0.5)
     }
 }
 
@@ -76,6 +81,10 @@ struct CalculatorButtonsView: View {
         [.one, .two, .three, .add],
         [.decimalPoint, .zero, .equals]
     ]
+    
+    var totalRows: Int {
+        return buttons.count
+    }
     
     struct CalculatorUtils {
         static func responsiveButtonSize(geometry: GeometryProxy, buttons: [[CalculatorButton]]) -> CGSize {
