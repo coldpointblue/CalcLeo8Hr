@@ -1,24 +1,3 @@
-//  ----------------------------------------------------
-//
-//  CalcLeo8HrUITests.swift
-//  Version 1.0
-//
-//  Unique ID:  D0615106-CDBF-4358-BC91-E34F55FB0D6B
-//
-//  part of the CalcLeo8HrUITests™ product.
-//
-//  Written in Swift 5.0 on macOS 14.0
-//
-//  https://github.com/coldpointblue
-//  Created by Hugo Diaz on 2023-10-11.
-//  
-//  ----------------------------------------------------
-
-//  ----------------------------------------------------
-/*  Goal explanation:  (whole app does? … for users)   */
-//  ----------------------------------------------------
-
-
 import XCTest
 
 final class CalcLeo8HrUITests: XCTestCase {
