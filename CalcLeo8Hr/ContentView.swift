@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Calculator button labels
 enum CalculatorButton: String, CaseIterable {
-    case clear = "AC", negate = "±", bitcoin = "₿",  divide = "÷"
+    case clear = "AC", negate = "±", bitcoin = "₿", divide = "÷"
     case seven = "7", eight = "8", nine = "9", multiply = "×"
     case four = "4", five = "5", six = "6", subtract = "-"
     case one = "1", two = "2", three = "3", add = "+"
@@ -29,21 +29,15 @@ struct ContentView: View {
     @State private var displayValue: String = "0"
     
     var body: some View {
-        GeometryReader { geometry in
-            calculatorLayout(geometry: geometry)
-        }
+        GeometryReader { calculatorLayout(geometry: $0) }
     }
     
-    /// Constructs the calculator layout
-    /// - Parameter geometry: GeometryProxy containing layout dimensions
-    /// - Returns: A VStack containing the display and button views
     private func calculatorLayout(geometry: GeometryProxy) -> some View {
         VStack(spacing: 0) {
             DisplayView(displayValue: $displayValue)
-                .frame(height: geometry.size.height * (1/6))
+                .frame(height: geometry.size.height / 6)
                 .background(CalcColor.edgeDisplay(for: geometry.size))
-            
-            CalculatorButtonsView(displayValue: $displayValue, geometry: (width: geometry.size.width, height: geometry.size.height * (5/6)))
+            CalculatorButtonsView(displayValue: $displayValue, geometry: geometry)
         }
     }
 }
@@ -51,7 +45,7 @@ struct ContentView: View {
 /// Calculator display screen
 struct DisplayView: View {
     @Binding var displayValue: String
-    let numberFontSize = CGFloat(70)
+    let numberFontSize: CGFloat = 70
     
     var body: some View {
         HStack(spacing: 0) {
@@ -70,7 +64,7 @@ struct DisplayView: View {
 /// Grid of calculator buttons
 struct CalculatorButtonsView: View {
     @Binding var displayValue: String
-    var geometry: (width: CGFloat, height: CGFloat)
+    var geometry: GeometryProxy
     
     let buttons: [[CalculatorButton]] = [
         [.clear, .negate, .bitcoin, .divide],
@@ -80,7 +74,16 @@ struct CalculatorButtonsView: View {
         [.decimalPoint, .zero, .equals]
     ]
     
-    // Define row and column colors as dictionaries
+    struct CalculatorUtils {
+        static func responsiveButtonSize(geometry: GeometryProxy, buttons: [[CalculatorButton]]) -> CGSize {
+            let totalRows = CGFloat(buttons.count) + 1
+            let maxColumnCount = buttons.map { CGFloat($0.count) }.max() ?? 1
+            let buttonWidth = geometry.size.width / maxColumnCount
+            let buttonHeight = geometry.size.height / totalRows
+            return CGSize(width: buttonWidth, height: buttonHeight)
+        }
+    }
+    
     private let rowColors: [Int: Color] = [0: CalcColor.utility]
     private let columnColors: [Int: Color] = [3: CalcColor.operation]
     private let overrideButtonColor: [CalculatorButton: Color] = [.equals: .orange]
@@ -88,26 +91,28 @@ struct CalculatorButtonsView: View {
     var body: some View {
         VStack(spacing: 0) {
             ForEach(buttons.indices, id: \.self) { rowIndex in
-                HStack(spacing: 0) {
-                    ForEach(buttons[rowIndex].indices, id: \.self) { columnIndex in
-                        let button = buttons[rowIndex][columnIndex]
-                        
-                        CalculatorButtonView(
-                            button: button,
-                            displayValue: $displayValue,
-                            backgroundColor: overrideButtonColor[button] ??
-                            columnColors[columnIndex] ?? rowColors[rowIndex] ??
-                            CalcColor.digit
-                        )
-                        .frame(
-                            width: geometry.width / CGFloat(buttons[rowIndex].count),
-                            height: geometry.height / CGFloat(buttons.count)
-                        )
-                    }
-                }
+                buttonRow(rowIndex: rowIndex)
             }
         }
         .background(CalcColor.outside)
+    }
+    
+    private var buttonSize: CGSize {
+        return CalculatorUtils.responsiveButtonSize(geometry: geometry, buttons: buttons)
+    }
+    
+    private func buttonRow(rowIndex: Int) -> some View {
+        HStack(spacing: 0) {
+            ForEach(buttons[rowIndex].indices, id: \.self) { columnIndex in
+                let button = buttons[rowIndex][columnIndex]
+                CalculatorButtonView(
+                    button: button,
+                    displayValue: $displayValue,
+                    backgroundColor: overrideButtonColor[button] ?? columnColors[columnIndex] ?? rowColors[rowIndex] ?? CalcColor.digit
+                )
+                .frame(width: buttonSize.width, height: buttonSize.height)
+            }
+        }
     }
 }
 
@@ -119,9 +124,7 @@ struct CalculatorButtonView: View {
     
     var body: some View {
         GeometryReader { geo in
-            Button(action: {
-                displayValue = button.rawValue
-            }) {
+            Button(action: { displayValue = button.rawValue }) {
                 ZStack {
                     backgroundColor
                     Text(button.rawValue)
