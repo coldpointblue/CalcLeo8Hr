@@ -1,30 +1,31 @@
 import SwiftUI
 
-/// Calculator button labels
+/// Enum representing calculator button labels.
 enum CalculatorButton: String, CaseIterable {
-    case clear = "AC", negate = "±", bitcoin = "₿", divide = "÷"
-    case seven = "7", eight = "8", nine = "9", multiply = "×"
-    case four = "4", five = "5", six = "6", subtract = "-"
-    case one = "1", two = "2", three = "3", add = "+"
-    case zero = "0", decimalPoint = ".", equals = "="
+    case clear = "AC", negate = "±", bitcoin = "₿", divide = "÷",
+         seven = "7", eight = "8", nine = "9", multiply = "×",
+         four = "4", five = "5", six = "6", subtract = "-",
+         one = "1", two = "2", three = "3", add = "+",
+         zero = "0", decimalPoint = ".", equals = "="
 }
 
-/// Color scheme for calculator
+/// Struct for calculator color scheme.
 struct CalcColor {
-    static let display: Color = .white
-    static let outside: Color = .black
-    static let utility: Color = Color(.systemGray)
-    static let digit: Color = Color(.systemGray2)
-    static let operation: Color = .orange
-    static let buttonBorder: Color = .black
-    static let symbol: Color = .white
+    static let display = Color.white
+    static let outside = Color.black
+    static let utility = Color(.systemGray)
+    static let digit = Color(.systemGray2)
+    static let operation = Color.orange
+    static let buttonBorder = Color.black
+    static let symbol = Color.white
     
+    /// Returns the display color based on the orientation.
     static func edgeDisplay(for orientation: CGSize) -> Color {
         orientation.width > orientation.height ? outside : display
     }
 }
 
-/// Main calculator view
+/// Main view for the calculator.
 struct ContentView: View {
     @State private var displayValue: String = "0"
     
@@ -42,10 +43,11 @@ struct ContentView: View {
     }
 }
 
-/// Calculator display screen
+/// View for the calculator display screen.
 struct DisplayView: View {
     @Binding var displayValue: String
     let numberFontSize: CGFloat = 70
+    let indentRight: CGFloat = 24
     
     var body: some View {
         HStack(spacing: 0) {
@@ -53,7 +55,7 @@ struct DisplayView: View {
                 .font(.system(size: numberFontSize))
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .background(CalcColor.display)
-            Spacer(minLength: numberFontSize / 2)
+                .padding(.trailing, indentRight)
         }
         .background(CalcColor.display)
         .padding(1)
@@ -61,7 +63,7 @@ struct DisplayView: View {
     }
 }
 
-/// Grid of calculator buttons
+/// View for the grid of calculator buttons.
 struct CalculatorButtonsView: View {
     @Binding var displayValue: String
     var geometry: GeometryProxy
@@ -116,7 +118,7 @@ struct CalculatorButtonsView: View {
     }
 }
 
-/// Individual calculator button
+/// View for an individual calculator button.
 struct CalculatorButtonView: View {
     let button: CalculatorButton
     @Binding var displayValue: String
