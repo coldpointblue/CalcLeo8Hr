@@ -6,6 +6,7 @@ enum CalculatorButton: String, CaseIterable {
          seven = "7", eight = "8", nine = "9", multiply = "×",
          four = "4", five = "5", six = "6", subtract = "-",
          one = "1", two = "2", three = "3", add = "+",
+         sine = "sin", cosine = "cos",
          zero = "0", decimalPoint = ".", equals = "="
 }
 
@@ -79,7 +80,8 @@ struct CalculatorButtonsView: View {
         [.seven, .eight, .nine, .multiply],
         [.four, .five, .six, .subtract],
         [.one, .two, .three, .add],
-        [.decimalPoint, .zero, .equals]
+        [.decimalPoint, .zero, .equals],
+        [.sine, .cosine]
     ]
     
     var totalRows: Int {
@@ -196,6 +198,10 @@ struct CalculatorButtonView: View {
             logInfo("Decimal point" + notYetImplemented)
         case .equals:
             logInfo("Equals" + notYetImplemented)
+        case .sine:
+            logInfo("Sine" + notYetImplemented)
+        case .cosine:
+            logInfo("Cosine" + notYetImplemented)
         }
     }
     
