@@ -56,6 +56,7 @@ struct DisplayView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .background(CalcColor.display)
                 .padding(.trailing, indentRight)
+                .accessibilityIdentifier("displayValue") // For UI tests.
         }
         .background(CalcColor.display)
         .padding(1)
