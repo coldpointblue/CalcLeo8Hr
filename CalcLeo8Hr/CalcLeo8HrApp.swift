@@ -4,7 +4,7 @@ import SwiftUI
 struct CalcLeo8HrApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: CalculatorViewModel())
         }
     }
 }

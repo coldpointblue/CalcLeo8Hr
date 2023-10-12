@@ -93,19 +93,19 @@ struct CalcColor {
 
 /// Main view for the calculator
 struct ContentView: View {
-    @State private var displayValue: String = "0"
+    @ObservedObject var viewModel: CalculatorViewModel
     
     var body: some View {
         GeometryReader { calculatorLayout(geometry: $0) }
     }
     
     private func calculatorLayout(geometry: GeometryProxy) -> some View {
-        let buttonsView = CalculatorButtonsView(displayValue: $displayValue, geometry: geometry)
+        let buttonsView = CalculatorButtonsView(displayValue: $viewModel.displayValue, geometry: geometry, viewModel: viewModel)
         let totalRows = CGFloat(buttonsView.totalRows)
         let displayHeight = geometry.size.height / (totalRows + 1)  // +1 for the display row
         
         return VStack(spacing: 0) {
-            DisplayView(displayValue: $displayValue)
+            DisplayView(displayValue: $viewModel.displayValue)
                 .frame(height: displayHeight)
                 .background(CalcColor.edgeDisplay(for: geometry.size))
             buttonsView
@@ -139,6 +139,7 @@ struct DisplayView: View {
 struct CalculatorButtonsView: View {
     @Binding var displayValue: String
     var geometry: GeometryProxy
+    var viewModel: CalculatorViewModel
     
     // MARK: - Main Logic for Button Layout
     /// 2D layout array representing calculator buttons
@@ -189,7 +190,7 @@ struct CalculatorButtonsView: View {
                 CalculatorButtonView(
                     button: button,
                     displayValue: $displayValue,
-                    backgroundColor: overrideButtonColor[button] ?? columnColors[columnIndex] ?? rowColors[rowIndex] ?? CalcColor.digit
+                    backgroundColor: overrideButtonColor[button] ?? columnColors[columnIndex] ?? rowColors[rowIndex] ?? CalcColor.digit, viewModel: viewModel
                 )
                 .frame(width: buttonSize.width, height: buttonSize.height)
             }
@@ -203,22 +204,28 @@ struct CalculatorButtonView: View {
     @Binding var displayValue: String
     let backgroundColor: Color
     
+    var viewModel: CalculatorViewModel
+    
     var body: some View {
         GeometryReader { geo in
             Button(action: {
                 do {
-                    try handleButtonPress(button: button)
+                    try viewModel.handleButtonPress(button: button)
                 } catch let error as GenericError {
                     Logger.log(error.description, type: .error)
-                    displayValue = "Error"
+                    DispatchQueue.main.async {
+                        self.displayValue = "Error"
+                    }
                 } catch {
                     Logger.log("An unexpected error occurred.", type: .error)
-                    displayValue = "Error"
+                    DispatchQueue.main.async {
+                        self.displayValue = "Error"
+                    }
                 }
             }) {
                 ZStack {
                     backgroundColor
-                    Text(button.rawValue)
+                    Text(button.description)
                         .font(.system(size: 40))
                         .foregroundColor(CalcColor.symbol)
                 }
@@ -280,5 +287,5 @@ struct CalculatorButtonView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(viewModel: CalculatorViewModel())
 }
