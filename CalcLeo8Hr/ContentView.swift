@@ -135,11 +135,51 @@ struct DisplayView: View {
     }
 }
 
+/// Specific error when button is not found
+enum CalculatorButtonsError: Error, CustomStringConvertible {
+    case buttonNotFound(String)
+    
+    var description: String {
+        switch self {
+        case .buttonNotFound(let message):
+            return "Button not in liveButtons dictionary: \(message)"
+        }
+    }
+}
+
 /// View for grid of calculator buttons
 struct CalculatorButtonsView: View {
     @Binding var displayValue: String
     var geometry: GeometryProxy
     var viewModel: CalculatorViewModel
+    
+    @State private var liveButtons: [CalculatorButton: Bool] = [:]
+    
+    /// Keyboard reset to include every button… i.e. liveButtons[.operation(.sine)] = false
+    func keyboardReset() {
+        liveButtons = Dictionary(uniqueKeysWithValues: CalculatorButton.allCases.map { ($0, true) })
+    }
+    
+    /// Toggle button to show or not… i.e. safelyToggleButton(.operation(.sine))
+    func safelyToggleButton(_ button: CalculatorButton) {
+        do {
+            try toggleButton(button)
+        } catch let error as CalculatorButtonsError {
+            Logger.debugInfo(error.description)
+        } catch {
+            Logger.debugInfo("Uknown error toggling button")
+        }
+    }
+    
+    /// Toggle a keyboard button on/off, throws error… i.e. toggleButton(.operation(.sine))
+    /// - Parameter button: The `CalculatorButton` to toggle.
+    /// - Throws: An error if the button is not found.
+    func toggleButton(_ button: CalculatorButton) throws {
+        guard liveButtons.keys.contains(button) else {
+            throw CalculatorButtonsError.buttonNotFound("Button: \(button)")
+        }
+        liveButtons[button] = liveButtons[button].map { !$0 }
+    }
     
     // MARK: - Main Logic for Button Layout
     /// 2D layout array representing calculator buttons
@@ -177,6 +217,9 @@ struct CalculatorButtonsView: View {
             }
         }
         .background(CalcColor.outside)
+        .onAppear {
+            self.keyboardReset()
+        }
     }
     
     private var buttonSize: CGSize {
@@ -187,12 +230,14 @@ struct CalculatorButtonsView: View {
         HStack(spacing: 0) {
             ForEach(buttons[rowIndex].indices, id: \.self) { columnIndex in
                 let button = buttons[rowIndex][columnIndex]
-                CalculatorButtonView(
-                    button: button,
-                    displayValue: $displayValue,
-                    backgroundColor: overrideButtonColor[button] ?? columnColors[columnIndex] ?? rowColors[rowIndex] ?? CalcColor.digit, viewModel: viewModel
-                )
-                .frame(width: buttonSize.width, height: buttonSize.height)
+                if liveButtons[button] == true {
+                    CalculatorButtonView(
+                        button: button,
+                        displayValue: $displayValue,
+                        backgroundColor: overrideButtonColor[button] ?? columnColors[columnIndex] ?? rowColors[rowIndex] ?? CalcColor.digit, viewModel: viewModel
+                    )
+                    .frame(width: buttonSize.width, height: buttonSize.height)
+                }
             }
         }
     }
