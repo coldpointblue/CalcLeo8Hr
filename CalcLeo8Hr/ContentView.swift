@@ -156,6 +156,10 @@ struct CalculatorButtonsView: View {
         return buttons.count
     }
     
+    private let rowColors: [Int: Color] = [0: CalcColor.utility]
+    private let columnColors: [Int: Color] = [3: CalcColor.operation]
+    private let overrideButtonColor: [CalculatorButton: Color] = [.standard(.equal): .orange]
+    
     struct CalculatorUtils {
         static func responsiveButtonSize(geometry: GeometryProxy, buttons: [[CalculatorButton]]) -> CGSize {
             let totalRows = CGFloat(buttons.count) + 1
@@ -165,10 +169,6 @@ struct CalculatorButtonsView: View {
             return CGSize(width: buttonWidth, height: buttonHeight)
         }
     }
-    
-    private let rowColors: [Int: Color] = [0: CalcColor.utility]
-    private let columnColors: [Int: Color] = [3: CalcColor.operation]
-    private let overrideButtonColor: [CalculatorButton: Color] = [.equals: .orange]
     
     var body: some View {
         VStack(spacing: 0) {
@@ -233,56 +233,6 @@ struct CalculatorButtonView: View {
             .frame(width: geo.size.width, height: geo.size.height)
             .border(CalcColor.buttonBorder, width: 1)
         }
-    }
-    
-    // Briefly display an underscore and then remove it
-    private func flashIgnore() {
-        let currentDisplay = displayValue
-        displayValue = "_"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            displayValue = currentDisplay
-        }
-    }
-    
-    private func handleButtonPress(button: CalculatorButton) throws {
-        let notYetImplemented = " operation not implemented"
-        
-        // If "Error" is displayed, ignore all except for "AC"
-        guard displayValue != "Error" || displayValue == "Error" && button == .clear else {
-            flashIgnore()
-            return
-        }
-        
-        switch button {
-        case .clear:
-            displayValue = "0"
-        case .negate:
-            logInfo("Negate" + notYetImplemented)
-        case .bitcoin:
-            throw GenericError.invalidOperation("Bitcoin web call" + notYetImplemented)
-        case .divide, .multiply, .subtract, .add:
-            logInfo("Arithmetic" + notYetImplemented)
-        case .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
-            displayValue = (displayValue == "0") ? button.rawValue : displayValue + button.rawValue
-        case .zero:
-            if displayValue != "0" { displayValue += button.rawValue } else {
-                flashIgnore()
-            }
-        case .decimalPoint:
-            logInfo("Decimal point" + notYetImplemented)
-        case .equals:
-            logInfo("Equals" + notYetImplemented)
-        case .sine:
-            logInfo("Sine" + notYetImplemented)
-        case .cosine:
-            logInfo("Cosine" + notYetImplemented)
-        }
-    }
-    
-    private func logInfo(_ message: String) {
-#if DEBUG
-        Logger.log(message, type: .info)
-#endif
     }
 }
 
