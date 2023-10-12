@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72405F082AD7CDF000A92BD7 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72405F072AD7CDF000A92BD7 /* CalculatorModel.swift */; };
+		72405F0A2AD7CE0C00A92BD7 /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */; };
+		72405F0C2AD8090800A92BD7 /* OperationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72405F0B2AD8090800A92BD7 /* OperationEnum.swift */; };
 		72CED7B82AD66D23007DF702 /* CalcLeo8HrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CED7B72AD66D23007DF702 /* CalcLeo8HrApp.swift */; };
 		72CED7BA2AD66D23007DF702 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CED7B92AD66D23007DF702 /* ContentView.swift */; };
 		72CED7BC2AD66D24007DF702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72CED7BB2AD66D24007DF702 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		72405F072AD7CDF000A92BD7 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
+		72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
+		72405F0B2AD8090800A92BD7 /* OperationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationEnum.swift; sourceTree = "<group>"; };
 		72CED7B42AD66D23007DF702 /* CalcLeo8Hr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalcLeo8Hr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72CED7B72AD66D23007DF702 /* CalcLeo8HrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcLeo8HrApp.swift; sourceTree = "<group>"; };
 		72CED7B92AD66D23007DF702 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +106,9 @@
 			children = (
 				72CED7B72AD66D23007DF702 /* CalcLeo8HrApp.swift */,
 				72CED7B92AD66D23007DF702 /* ContentView.swift */,
+				72405F0B2AD8090800A92BD7 /* OperationEnum.swift */,
+				72405F072AD7CDF000A92BD7 /* CalculatorModel.swift */,
+				72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */,
 				72CED7E12AD6C3A1007DF702 /* ErrorHandling.swift */,
 				72CED7E32AD6C3B2007DF702 /* Logging.swift */,
 				72CED7BB2AD66D24007DF702 /* Assets.xcassets */,
@@ -264,8 +273,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				72CED7E22AD6C3A1007DF702 /* ErrorHandling.swift in Sources */,
+				72405F082AD7CDF000A92BD7 /* CalculatorModel.swift in Sources */,
+				72405F0C2AD8090800A92BD7 /* OperationEnum.swift in Sources */,
 				72CED7BA2AD66D23007DF702 /* ContentView.swift in Sources */,
 				72CED7B82AD66D23007DF702 /* CalcLeo8HrApp.swift in Sources */,
+				72405F0A2AD7CE0C00A92BD7 /* CalculatorViewModel.swift in Sources */,
 				72CED7E42AD6C3B2007DF702 /* Logging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
