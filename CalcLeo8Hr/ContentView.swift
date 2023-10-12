@@ -75,7 +75,7 @@ enum CalculatorButton: CustomStringConvertible, Hashable {
     }
 }
 
-/// Struct for calculator color scheme.
+/// Struct for calculator color scheme
 struct CalcColor {
     static let display = Color.white
     static let outside = Color.black
@@ -85,13 +85,13 @@ struct CalcColor {
     static let buttonBorder = Color.black
     static let symbol = Color.white
     
-    /// Returns the display color based on the orientation.
+    /// Returns display color based on the orientation to fill outside
     static func edgeDisplay(for orientation: CGSize) -> Color {
         orientation.width > orientation.height ? outside : display
     }
 }
 
-/// Main view for the calculator.
+/// Main view for the calculator
 struct ContentView: View {
     @State private var displayValue: String = "0"
     
@@ -103,7 +103,7 @@ struct ContentView: View {
         let buttonsView = CalculatorButtonsView(displayValue: $displayValue, geometry: geometry)
         let totalRows = CGFloat(buttonsView.totalRows)
         let displayHeight = geometry.size.height / (totalRows + 1)  // +1 for the display row
-
+        
         return VStack(spacing: 0) {
             DisplayView(displayValue: $displayValue)
                 .frame(height: displayHeight)
@@ -113,7 +113,7 @@ struct ContentView: View {
     }
 }
 
-/// View for the calculator display screen.
+/// View for the calculator display screen
 struct DisplayView: View {
     @Binding var displayValue: String
     let numberFontSize: CGFloat = 70
@@ -135,18 +135,20 @@ struct DisplayView: View {
     }
 }
 
-/// View for the grid of calculator buttons.
+/// View for grid of calculator buttons
 struct CalculatorButtonsView: View {
     @Binding var displayValue: String
     var geometry: GeometryProxy
     
+    // MARK: - Main Logic for Button Layout
+    /// 2D layout array representing calculator buttons
     let buttons: [[CalculatorButton]] = [
-        [.clear, .negate, .bitcoin, .divide],
-        [.seven, .eight, .nine, .multiply],
-        [.four, .five, .six, .subtract],
-        [.one, .two, .three, .add],
-        [.decimalPoint, .zero, .equals],
-        [.sine, .cosine]
+        [.standard(.clear), .standard(.negate), .standard(.bitcoin), .operation(.divide)],
+        [.digit(.seven), .digit(.eight), .digit(.nine), .operation(.multiply)],
+        [.digit(.four), .digit(.five), .digit(.six), .operation(.subtract)],
+        [.digit(.one), .digit(.two), .digit(.three), .operation(.add)],
+        [.standard(.decimalPoint), .digit(.zero), .standard(.equal)],
+        [.operation(.sine), .operation(.cosine)]
     ]
     
     var totalRows: Int {
@@ -195,7 +197,7 @@ struct CalculatorButtonsView: View {
     }
 }
 
-/// View for an individual calculator button.
+/// View for individual calculator button
 struct CalculatorButtonView: View {
     let button: CalculatorButton
     @Binding var displayValue: String
