@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Specific error when button is not found
+/// Specific error when button is not found. Kept with Views for modularity.
 enum CalculatorButtonsError: Error, CustomStringConvertible {
     case buttonNotFound(String)
     

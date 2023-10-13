@@ -9,7 +9,7 @@ struct ContentView: View {
     }
     
     private func calculatorLayout(geometry: GeometryProxy) -> some View {
-        let buttonsView = CalculatorButtonsView(displayValue: $viewModel.displayValue, geometry: geometry, viewModel: viewModel)
+        let buttonsView = CalculatorGridView(displayValue: $viewModel.displayValue, geometry: geometry, viewModel: viewModel)
         let totalRows = CGFloat(buttonsView.totalRows)
         let displayHeight = geometry.size.height / (totalRows + 1)  // +1 for the display row
         

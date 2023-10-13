@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// View for grid of calculator buttons
-struct CalculatorButtonsView: View {
+struct CalculatorGridView: View {
     @Binding var displayValue: String
     var geometry: GeometryProxy
     var viewModel: CalculatorViewModel

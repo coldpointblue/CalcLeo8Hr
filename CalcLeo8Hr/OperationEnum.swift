@@ -1,4 +1,5 @@
 import SwiftUI
+/// Operation enum is a utility shared between Views and Model, because DRY
 
 /// Enumerates supported mathematical operations.
 enum Operation: String, CaseIterable, Hashable {

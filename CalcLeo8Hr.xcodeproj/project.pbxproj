@@ -11,7 +11,7 @@
 		72064A302AD932A5008B8DB3 /* CalcColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A2F2AD932A5008B8DB3 /* CalcColor.swift */; };
 		72064A322AD932E6008B8DB3 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A312AD932E6008B8DB3 /* DisplayView.swift */; };
 		72064A342AD93311008B8DB3 /* CalculatorButtonsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A332AD93311008B8DB3 /* CalculatorButtonsError.swift */; };
-		72064A362AD93349008B8DB3 /* CalculatorButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A352AD93349008B8DB3 /* CalculatorButtonsView.swift */; };
+		72064A362AD93349008B8DB3 /* CalculatorGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A352AD93349008B8DB3 /* CalculatorGridView.swift */; };
 		72064A382AD933DB008B8DB3 /* CalculatorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A372AD933DB008B8DB3 /* CalculatorButtonView.swift */; };
 		72405F082AD7CDF000A92BD7 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72405F072AD7CDF000A92BD7 /* CalculatorModel.swift */; };
 		72405F0A2AD7CE0C00A92BD7 /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */; };
@@ -49,7 +49,7 @@
 		72064A2F2AD932A5008B8DB3 /* CalcColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcColor.swift; sourceTree = "<group>"; };
 		72064A312AD932E6008B8DB3 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		72064A332AD93311008B8DB3 /* CalculatorButtonsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonsError.swift; sourceTree = "<group>"; };
-		72064A352AD93349008B8DB3 /* CalculatorButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonsView.swift; sourceTree = "<group>"; };
+		72064A352AD93349008B8DB3 /* CalculatorGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorGridView.swift; sourceTree = "<group>"; };
 		72064A372AD933DB008B8DB3 /* CalculatorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonView.swift; sourceTree = "<group>"; };
 		72405F072AD7CDF000A92BD7 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 		72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
@@ -93,6 +93,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72064A3A2AD936AD008B8DB3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				72CED7B92AD66D23007DF702 /* ContentView.swift */,
+				72064A372AD933DB008B8DB3 /* CalculatorButtonView.swift */,
+				72064A2D2AD93265008B8DB3 /* CalculatorButton.swift */,
+				72064A352AD93349008B8DB3 /* CalculatorGridView.swift */,
+				72064A332AD93311008B8DB3 /* CalculatorButtonsError.swift */,
+				72064A312AD932E6008B8DB3 /* DisplayView.swift */,
+				72064A2F2AD932A5008B8DB3 /* CalcColor.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		72CED7AB2AD66D23007DF702 = {
 			isa = PBXGroup;
 			children = (
@@ -117,13 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				72CED7B72AD66D23007DF702 /* CalcLeo8HrApp.swift */,
-				72CED7B92AD66D23007DF702 /* ContentView.swift */,
-				72064A372AD933DB008B8DB3 /* CalculatorButtonView.swift */,
-				72064A352AD93349008B8DB3 /* CalculatorButtonsView.swift */,
-				72064A332AD93311008B8DB3 /* CalculatorButtonsError.swift */,
-				72064A312AD932E6008B8DB3 /* DisplayView.swift */,
-				72064A2F2AD932A5008B8DB3 /* CalcColor.swift */,
-				72064A2D2AD93265008B8DB3 /* CalculatorButton.swift */,
+				72064A3A2AD936AD008B8DB3 /* Views */,
 				72405F0B2AD8090800A92BD7 /* OperationEnum.swift */,
 				72405F072AD7CDF000A92BD7 /* CalculatorModel.swift */,
 				72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */,
@@ -297,7 +305,7 @@
 				72405F0C2AD8090800A92BD7 /* OperationEnum.swift in Sources */,
 				72064A322AD932E6008B8DB3 /* DisplayView.swift in Sources */,
 				72CED7BA2AD66D23007DF702 /* ContentView.swift in Sources */,
-				72064A362AD93349008B8DB3 /* CalculatorButtonsView.swift in Sources */,
+				72064A362AD93349008B8DB3 /* CalculatorGridView.swift in Sources */,
 				72CED7B82AD66D23007DF702 /* CalcLeo8HrApp.swift in Sources */,
 				72064A302AD932A5008B8DB3 /* CalcColor.swift in Sources */,
 				72405F0A2AD7CE0C00A92BD7 /* CalculatorViewModel.swift in Sources */,
