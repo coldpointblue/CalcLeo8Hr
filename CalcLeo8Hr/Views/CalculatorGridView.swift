@@ -76,7 +76,7 @@ struct CalculatorGridView: View {
         return CalculatorUtils.responsiveButtonSize(geometry: geometry, buttons: buttons)
     }
     
-    private let overrideButtonColor: [CalculatorButton: Color] = [.standard(.clear): .orange]
+    private let overrideButtonColor: [CalculatorButton: Color] = [.standard(.clear): .yellow, .standard(.equal): .green.opacity(0.6)]
     
     private func buttonRow(rowIndex: Int) -> some View {
         HStack(spacing: 0) {
