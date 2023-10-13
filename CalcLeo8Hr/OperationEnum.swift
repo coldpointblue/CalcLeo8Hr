@@ -1,3 +1,5 @@
+import SwiftUI
+
 /// Enumerates supported mathematical operations.
 enum Operation: String, CaseIterable, Hashable {
     case none = ""
