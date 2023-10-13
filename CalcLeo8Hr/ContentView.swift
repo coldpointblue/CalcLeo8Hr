@@ -12,13 +12,7 @@ enum CalculatorButton: CustomStringConvertible, Hashable {
     
     /// Enumerates standard buttons like AC, ±, etc.
     enum Standard: String, CaseIterable, Hashable {
-        case clear = "AC"
-        case negate = "±"
-        case bitcoin = "₿"
-        case decimalPoint = "."
-        case equal = "="
-        
-        /// Returns symbol for the standard button
+        case clear = "AC", negate = "±", bitcoin = "₿", decimalPoint = ".", equal = "="
         var symbol: String { rawValue }
     }
     
@@ -26,14 +20,11 @@ enum CalculatorButton: CustomStringConvertible, Hashable {
     enum Digit: String, CaseIterable, Hashable {
         case zero = "0", one = "1", two = "2", three = "3", four = "4",
              five = "5", six = "6", seven = "7", eight = "8", nine = "9"
-        
-        /// Returns symbol for the digit
         var symbol: String { rawValue }
     }
     
     // MARK: - Properties
     
-    /// Returns description for specific CalculatorButton
     var description: String {
         switch self {
         case .operation(let op): return op.symbol
@@ -182,6 +173,7 @@ struct CalculatorButtonsView: View {
     }
     
     // MARK: - Main Logic for Button Layout
+    
     /// 2D layout array representing calculator buttons
     let buttons: [[CalculatorButton]] = [
         [.standard(.clear), .standard(.negate), .standard(.bitcoin), .operation(.divide)],
@@ -195,10 +187,6 @@ struct CalculatorButtonsView: View {
     var totalRows: Int {
         return buttons.count
     }
-    
-    private let rowColors: [Int: Color] = [0: CalcColor.utility]
-    private let columnColors: [Int: Color] = [3: CalcColor.operation]
-    private let overrideButtonColor: [CalculatorButton: Color] = [.standard(.equal): .orange]
     
     struct CalculatorUtils {
         static func responsiveButtonSize(geometry: GeometryProxy, buttons: [[CalculatorButton]]) -> CGSize {
@@ -226,15 +214,29 @@ struct CalculatorButtonsView: View {
         return CalculatorUtils.responsiveButtonSize(geometry: geometry, buttons: buttons)
     }
     
+    /// Determines color of a CalculatorButton based on its type
+    /// - Parameter button: Type of CalculatorButton
+    /// - Returns: Color for the button
+    func colorByType(_ button: CalculatorButton) -> Color {
+        switch button {
+        case .operation: return CalcColor.operation
+        case .standard: return CalcColor.utility
+        case .digit: return CalcColor.digit
+        }
+    }
+    
+    private let overrideButtonColor: [CalculatorButton: Color] = [.standard(.clear): .orange]
+    
     private func buttonRow(rowIndex: Int) -> some View {
         HStack(spacing: 0) {
             ForEach(buttons[rowIndex].indices, id: \.self) { columnIndex in
                 let button = buttons[rowIndex][columnIndex]
+                let backgroundColor = overrideButtonColor[button] ?? colorByType(button)
+                
                 if liveButtons[button] == true {
                     CalculatorButtonView(
-                        button: button,
-                        displayValue: $displayValue,
-                        backgroundColor: overrideButtonColor[button] ?? columnColors[columnIndex] ?? rowColors[rowIndex] ?? CalcColor.digit, viewModel: viewModel
+                        button: button, displayValue: $displayValue,
+                        backgroundColor: backgroundColor, viewModel: viewModel
                     )
                     .frame(width: buttonSize.width, height: buttonSize.height)
                 }
