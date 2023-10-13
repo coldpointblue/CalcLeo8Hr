@@ -33,6 +33,14 @@ enum CalculatorButton: CustomStringConvertible, Hashable {
         }
     }
     
+    func colorByType() -> Color {
+        switch self {
+        case .operation: return CalcColor.operation
+        case .standard: return CalcColor.utility
+        case .digit: return CalcColor.digit
+        }
+    }
+    
     /// Returns array of all possible CalculatorButtons
     static var allCases: [CalculatorButton] {
         let standardButtons = Standard.allCases.map(CalculatorButton.standard)
@@ -214,24 +222,13 @@ struct CalculatorButtonsView: View {
         return CalculatorUtils.responsiveButtonSize(geometry: geometry, buttons: buttons)
     }
     
-    /// Determines color of a CalculatorButton based on its type
-    /// - Parameter button: Type of CalculatorButton
-    /// - Returns: Color for the button
-    func colorByType(_ button: CalculatorButton) -> Color {
-        switch button {
-        case .operation: return CalcColor.operation
-        case .standard: return CalcColor.utility
-        case .digit: return CalcColor.digit
-        }
-    }
-    
     private let overrideButtonColor: [CalculatorButton: Color] = [.standard(.clear): .orange]
     
     private func buttonRow(rowIndex: Int) -> some View {
         HStack(spacing: 0) {
             ForEach(buttons[rowIndex].indices, id: \.self) { columnIndex in
                 let button = buttons[rowIndex][columnIndex]
-                let backgroundColor = overrideButtonColor[button] ?? colorByType(button)
+                let backgroundColor = overrideButtonColor[button] ?? button.colorByType()
                 
                 if liveButtons[button] == true {
                     CalculatorButtonView(
