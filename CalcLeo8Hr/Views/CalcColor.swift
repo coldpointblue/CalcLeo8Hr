@@ -21,4 +21,9 @@ struct CalcColor {
     static func edgeDisplay(for orientation: CGSize) -> Color {
         return orientation.width > orientation.height ? outside : display
     }
+    
+    static func toggleScheme() {
+        activeColorScheme = (activeColorScheme == .default) ? .alternate : .default
+    }
+    
 }
