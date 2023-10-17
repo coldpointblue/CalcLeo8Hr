@@ -1,4 +1,8 @@
 /* English */
 "alertMistakeMessage" = "Cannot do that right now.";
 "alertMistakeTitle" = "An Error Occurred";
+
 "alertContinueButtonLabel" = "Continue";
+
+"alertComplexMessage" = "You're not gonna believe this:\r%@";
+"alertComplexTitle" = "What The…???";
