@@ -13,6 +13,11 @@
 		72064A342AD93311008B8DB3 /* CalculatorButtonsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A332AD93311008B8DB3 /* CalculatorButtonsError.swift */; };
 		72064A362AD93349008B8DB3 /* CalculatorGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A352AD93349008B8DB3 /* CalculatorGridView.swift */; };
 		72064A382AD933DB008B8DB3 /* CalculatorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A372AD933DB008B8DB3 /* CalculatorButtonView.swift */; };
+		723AB0AE2ADE95FC0063AEC6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723AB0AD2ADE95FC0063AEC6 /* StringExtensions.swift */; };
+		723AB0B02ADE96090063AEC6 /* NumberFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723AB0AF2ADE96090063AEC6 /* NumberFormatterManager.swift */; };
+		723AB0B22ADE961A0063AEC6 /* DecimalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723AB0B12ADE961A0063AEC6 /* DecimalExtensions.swift */; };
+		723AB0B42ADE96270063AEC6 /* CalculationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723AB0B32ADE96270063AEC6 /* CalculationFunctions.swift */; };
+		723AB0B62ADE963B0063AEC6 /* SafeReciprocalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723AB0B52ADE963B0063AEC6 /* SafeReciprocalProtocol.swift */; };
 		72405F082AD7CDF000A92BD7 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72405F072AD7CDF000A92BD7 /* CalculatorModel.swift */; };
 		72405F0A2AD7CE0C00A92BD7 /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */; };
 		72405F0C2AD8090800A92BD7 /* OperationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72405F0B2AD8090800A92BD7 /* OperationEnum.swift */; };
@@ -51,6 +56,11 @@
 		72064A332AD93311008B8DB3 /* CalculatorButtonsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonsError.swift; sourceTree = "<group>"; };
 		72064A352AD93349008B8DB3 /* CalculatorGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorGridView.swift; sourceTree = "<group>"; };
 		72064A372AD933DB008B8DB3 /* CalculatorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonView.swift; sourceTree = "<group>"; };
+		723AB0AD2ADE95FC0063AEC6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		723AB0AF2ADE96090063AEC6 /* NumberFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterManager.swift; sourceTree = "<group>"; };
+		723AB0B12ADE961A0063AEC6 /* DecimalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtensions.swift; sourceTree = "<group>"; };
+		723AB0B32ADE96270063AEC6 /* CalculationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationFunctions.swift; sourceTree = "<group>"; };
+		723AB0B52ADE963B0063AEC6 /* SafeReciprocalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeReciprocalProtocol.swift; sourceTree = "<group>"; };
 		72405F072AD7CDF000A92BD7 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 		72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
 		72405F0B2AD8090800A92BD7 /* OperationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationEnum.swift; sourceTree = "<group>"; };
@@ -107,6 +117,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		723AB0B72ADE970D0063AEC6 /* PrecisionMath */ = {
+			isa = PBXGroup;
+			children = (
+				723AB0AD2ADE95FC0063AEC6 /* StringExtensions.swift */,
+				723AB0B52ADE963B0063AEC6 /* SafeReciprocalProtocol.swift */,
+				723AB0B12ADE961A0063AEC6 /* DecimalExtensions.swift */,
+				723AB0B32ADE96270063AEC6 /* CalculationFunctions.swift */,
+				723AB0AF2ADE96090063AEC6 /* NumberFormatterManager.swift */,
+			);
+			path = PrecisionMath;
+			sourceTree = "<group>";
+		};
 		72CED7AB2AD66D23007DF702 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +156,7 @@
 				72064A3A2AD936AD008B8DB3 /* Views */,
 				72405F0B2AD8090800A92BD7 /* OperationEnum.swift */,
 				72405F072AD7CDF000A92BD7 /* CalculatorModel.swift */,
+				723AB0B72ADE970D0063AEC6 /* PrecisionMath */,
 				72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */,
 				72CED7E12AD6C3A1007DF702 /* ErrorHandling.swift */,
 				72CED7E32AD6C3B2007DF702 /* Logging.swift */,
@@ -308,9 +331,14 @@
 				72064A362AD93349008B8DB3 /* CalculatorGridView.swift in Sources */,
 				72CED7B82AD66D23007DF702 /* CalcLeo8HrApp.swift in Sources */,
 				72064A302AD932A5008B8DB3 /* CalcColor.swift in Sources */,
+				723AB0B62ADE963B0063AEC6 /* SafeReciprocalProtocol.swift in Sources */,
+				723AB0B22ADE961A0063AEC6 /* DecimalExtensions.swift in Sources */,
 				72405F0A2AD7CE0C00A92BD7 /* CalculatorViewModel.swift in Sources */,
+				723AB0B42ADE96270063AEC6 /* CalculationFunctions.swift in Sources */,
+				723AB0AE2ADE95FC0063AEC6 /* StringExtensions.swift in Sources */,
 				72CED7E42AD6C3B2007DF702 /* Logging.swift in Sources */,
 				72064A2E2AD93265008B8DB3 /* CalculatorButton.swift in Sources */,
+				723AB0B02ADE96090063AEC6 /* NumberFormatterManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
