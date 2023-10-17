@@ -3,7 +3,11 @@ import Foundation
 enum LocalizedKey: String {
     case alertMistakeMessage
     case alertMistakeTitle
+    
     case alertContinueButtonLabel
+    
+    case alertComplexMessage
+    case alertComplexTitle
 }
 
 extension LocalizedKey {

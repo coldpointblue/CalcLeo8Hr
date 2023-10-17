@@ -3,9 +3,13 @@ import SwiftUI
 /// Main view for the calculator
 struct ContentView: View {
     @ObservedObject var viewModel: CalculatorViewModel
+    @State private var isErrorShown: Bool = false
     
     var body: some View {
         GeometryReader { calculatorLayout(geometry: $0) }
+            .alert(isPresented: $isErrorShown) {
+                alertSpecifics()
+            }
     }
     
     private func calculatorLayout(geometry: GeometryProxy) -> some View {
