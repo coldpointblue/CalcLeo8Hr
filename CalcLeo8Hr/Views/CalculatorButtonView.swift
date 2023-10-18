@@ -10,30 +10,38 @@ struct CalculatorButtonView: View {
     
     var body: some View {
         GeometryReader { geo in
-            Button(action: {
-                do {
-                    try viewModel.handleButtonPress(button: button)
-                } catch let error as GenericError {
-                    Logger.log(error.description, type: .error)
-                    DispatchQueue.main.async {
-                        self.displayValue = "Error"
-                    }
-                } catch {
-                    Logger.log("An unexpected error occurred.", type: .error)
-                    DispatchQueue.main.async {
-                        self.displayValue = "Error"
-                    }
-                }
-            }) {
+            Button(action: handleButtonPress) {
                 ZStack {
                     backgroundColor
                     Text(button.description)
-                        .font(.system(size: 40))
-                        .foregroundColor(CalcColor.symbol)
+                        .modifier(CalculatorButtonViewStyle())
                 }
             }
             .frame(width: geo.size.width, height: geo.size.height)
             .border(CalcColor.buttonBorder, width: 1)
         }
+    }
+    
+    func handleButtonPress() {
+        do {
+            try viewModel.handleButtonPress(button: button)
+        } catch let error {
+            handleError(error)
+        }
+    }
+    
+    private func handleError(_ error: Error) {
+        Logger.log("An unexpected error occurred pressing button: \(error.localizedDescription)", type: .error)
+        DispatchQueue.main.async {
+            self.displayValue = "Error"
+        }
+    }
+}
+
+struct CalculatorButtonViewStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 40))
+            .foregroundColor(CalcColor.symbol)
     }
 }
