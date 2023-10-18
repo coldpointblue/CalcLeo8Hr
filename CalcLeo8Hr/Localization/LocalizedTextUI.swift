@@ -8,6 +8,8 @@ enum LocalizedKey: String {
     
     case alertComplexMessage
     case alertComplexTitle
+    
+    case buttonConfigurationSheetTitle
 }
 
 extension LocalizedKey {

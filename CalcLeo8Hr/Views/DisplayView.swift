@@ -3,6 +3,7 @@ import SwiftUI
 /// View for the calculator display screen
 struct DisplayView: View {
     @Binding var displayValue: String
+    
     let numberFontSize: CGFloat = 70
     let indentRight: CGFloat = 24
     
@@ -15,9 +16,24 @@ struct DisplayView: View {
                 .padding(.trailing, indentRight)
                 .accessibilityIdentifier("displayValue") // For UI tests
         }
-        .background(CalcColor.display)
-        .padding(1)
-        .border(CalcColor.display, width: 1)
-        .minimumScaleFactor(0.5)
+        .modifier(DisplayViewStyle())
+    }
+}
+
+struct DisplayViewStyle: ViewModifier {
+    @State private var isConfigurationShown: Bool = false
+    
+    func body(content: Content) -> some View {
+        content
+            .background(CalcColor.display)
+            .padding(1)
+            .border(CalcColor.display, width: 1)
+            .minimumScaleFactor(0.5)
+            .onLongPressGesture(minimumDuration: 1) {
+                isConfigurationShown.toggle()
+            }
+            .sheet(isPresented: $isConfigurationShown) {
+                ConfigurationView()
+            }
     }
 }

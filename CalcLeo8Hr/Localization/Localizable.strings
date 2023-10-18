@@ -6,3 +6,5 @@
 
 "alertComplexMessage" = "You're not gonna believe this:\r%@";
 "alertComplexTitle" = "What The…???";
+
+"buttonConfigurationSheetTitle" = "Button Configuration";
