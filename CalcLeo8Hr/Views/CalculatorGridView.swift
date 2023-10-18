@@ -20,7 +20,7 @@ struct CalculatorGridView: View {
         } catch let error as CalculatorButtonsError {
             Logger.debugInfo(error.description)
         } catch {
-            Logger.debugInfo("Uknown error toggling button")
+            Logger.debugInfo("Unknown error toggling button")
         }
     }
     

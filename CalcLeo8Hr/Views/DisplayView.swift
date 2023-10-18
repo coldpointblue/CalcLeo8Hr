@@ -20,20 +20,12 @@ struct DisplayView: View {
     }
 }
 
-struct DisplayViewStyle: ViewModifier {
-    @State private var isConfigurationShown: Bool = false
-    
+struct DisplayViewStyle: ViewModifier {    
     func body(content: Content) -> some View {
         content
             .background(CalcColor.display)
             .padding(1)
             .border(CalcColor.display, width: 1)
             .minimumScaleFactor(0.5)
-            .onLongPressGesture(minimumDuration: 1) {
-                isConfigurationShown.toggle()
-            }
-            .sheet(isPresented: $isConfigurationShown) {
-                ConfigurationView()
-            }
     }
 }

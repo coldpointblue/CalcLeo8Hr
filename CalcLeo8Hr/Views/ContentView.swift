@@ -4,6 +4,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel: CalculatorViewModel
     @State private var isErrorShown: Bool = false
+    @State private var isConfigurationShown: Bool = false
     
     var body: some View {
         GeometryReader { calculatorLayout(geometry: $0) }
@@ -21,7 +22,13 @@ struct ContentView: View {
             DisplayView(displayValue: $viewModel.displayValue)
                 .frame(height: displayHeight)
                 .background(CalcColor.edgeDisplay(for: geometry.size))
+                .onLongPressGesture(minimumDuration: 1) {
+                    isConfigurationShown.toggle()
+                }
             buttonsView
+        }
+        .sheet(isPresented: $isConfigurationShown) {
+            ConfigurationView()
         }
     }
 }
