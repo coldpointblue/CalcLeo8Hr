@@ -3,8 +3,11 @@ import SwiftUI
 /// Main view for the calculator
 struct ContentView: View {
     @ObservedObject var viewModel: CalculatorViewModel
+    let configVM : ConfigurationViewModel = ConfigurationViewModel.shared
+    
     @State private var isErrorShown: Bool = false
     @State private var isConfigurationShown: Bool = false
+    private static let longPressDurationSecs: Double = 1.0
     
     var body: some View {
         GeometryReader { calculatorLayout(geometry: $0) }
@@ -22,13 +25,13 @@ struct ContentView: View {
             DisplayView(displayValue: $viewModel.displayValue)
                 .frame(height: displayHeight)
                 .background(CalcColor.edgeDisplay(for: geometry.size))
-                .onLongPressGesture(minimumDuration: 1) {
+                .onLongPressGesture(minimumDuration: ContentView.longPressDurationSecs) {
                     isConfigurationShown.toggle()
                 }
             buttonsView
         }
         .sheet(isPresented: $isConfigurationShown) {
-            ConfigurationView()
+            ConfigurationView(configViewModel: configVM, viewModel: viewModel)
         }
     }
 }

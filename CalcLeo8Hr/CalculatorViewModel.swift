@@ -3,6 +3,7 @@ import SwiftUI
 /// Represents the ViewModel in MVVM for the calculator
 class CalculatorViewModel: ObservableObject {
     @Published private(set) var model: CalculatorModel = CalculatorModel()
+    @ObservedObject var configViewModel: ConfigurationViewModel = ConfigurationViewModel.shared
     
     @Published private(set) var finalAnswer: Double = 0.0
     @Published var displayValue: String = "0"
@@ -11,7 +12,7 @@ class CalculatorViewModel: ObservableObject {
         let notYetImplemented = " operation not implemented"
         
         // If "Error" is displayed, ignore all except for "AC"
-        guard displayValue != "Error" || displayValue == "Error" && button == .standard(.clear) else {
+        guard displayValue != "Error" || (displayValue == "Error" && button == .standard(.clear)) else {
             flashIgnore()
             return
         }
@@ -83,5 +84,26 @@ class CalculatorViewModel: ObservableObject {
     private func resetCalculator() {
         model.reset()
         finalAnswer = 0.0
+    }
+}
+
+/// `ConfigurationViewModel` observable object class to configure visible calculator buttons.
+/// Requires CalculatorButton.allCases.count defined beforehand for simple automatic use.
+class ConfigurationViewModel: ObservableObject {
+    /// Published property for the state of visible buttons whose changes will be observed.
+    @Published var visibleButtons: [CalculatorButton: Bool]
+    
+    /// A singleton shared instance
+    static let shared = ConfigurationViewModel()
+    
+    /// Create shared instance of `ConfigurationViewModel`.
+    ///
+    /// - Parameter visibleButtons: Dictionary representing visibility of calculator buttons.
+    private init(_ initiallyVisibleButtons: [CalculatorButton: Bool]? = nil) {
+        self.visibleButtons = initiallyVisibleButtons ?? Dictionary(uniqueKeysWithValues: CalculatorButton.allCases.map { ($0, true) })
+    }
+    
+    func resetAllButtonsLive() {
+        self.visibleButtons.keys.forEach { self.visibleButtons[$0] = true }
     }
 }

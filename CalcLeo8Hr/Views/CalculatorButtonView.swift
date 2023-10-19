@@ -6,7 +6,7 @@ struct CalculatorButtonView: View {
     @Binding var displayValue: String
     let backgroundColor: Color
     
-    var viewModel: CalculatorViewModel
+    let viewModel: CalculatorViewModel
     
     var body: some View {
         GeometryReader { geo in

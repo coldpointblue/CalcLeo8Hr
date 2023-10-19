@@ -4,34 +4,11 @@ import SwiftUI
 struct CalculatorGridView: View {
     @Binding var displayValue: String
     var geometry: GeometryProxy
-    var viewModel: CalculatorViewModel
+    @ObservedObject var viewModel: CalculatorViewModel
+    @ObservedObject var configVM: ConfigurationViewModel = ConfigurationViewModel.shared
     
-    @State private var liveButtons: [CalculatorButton: Bool] = [:]
-    
-    /// Keyboard reset to include every button… i.e. liveButtons[.operation(.sine)] = false
-    func keyboardReset() {
-        liveButtons = Dictionary(uniqueKeysWithValues: CalculatorButton.allCases.map { ($0, true) })
-    }
-    
-    /// Toggle button to show or not… i.e. safelyToggleButton(.operation(.sine))
-    func safelyToggleButton(_ button: CalculatorButton) {
-        do {
-            try toggleButton(button)
-        } catch let error as CalculatorButtonsError {
-            Logger.debugInfo(error.description)
-        } catch {
-            Logger.debugInfo("Unknown error toggling button")
-        }
-    }
-    
-    /// Toggle a keyboard button on/off, throws error… i.e. toggleButton(.operation(.sine))
-    /// - Parameter button: The `CalculatorButton` to toggle.
-    /// - Throws: An error if the button is not found.
-    func toggleButton(_ button: CalculatorButton) throws {
-        guard liveButtons.keys.contains(button) else {
-            throw CalculatorButtonsError.buttonNotFound("Button: \(button)")
-        }
-        liveButtons[button] = liveButtons[button].map { !$0 }
+    var visibleButtons: [CalculatorButton: Bool] {
+        return configVM.visibleButtons
     }
     
     // MARK: - Main Logic for Button Layout
@@ -61,30 +38,30 @@ struct CalculatorGridView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
+        LazyVStack(spacing: 0) {
             ForEach(buttons.indices, id: \.self) { rowIndex in
                 buttonRow(rowIndex: rowIndex)
             }
         }
         .background(CalcColor.outside)
         .onAppear {
-            self.keyboardReset()
+            configVM.resetAllButtonsLive()
         }
     }
     
-    private var buttonSize: CGSize {
+    var buttonSize: CGSize {
         return CalculatorUtils.responsiveButtonSize(geometry: geometry, buttons: buttons)
     }
     
-    private let overrideButtonColor: [CalculatorButton: Color] = [.standard(.clear): .yellow, .standard(.equal): .green.opacity(0.6)]
+    let overrideButtonColor: [CalculatorButton: Color] = [.standard(.clear): .yellow, .standard(.equal): .green.opacity(0.6)]
     
-    private func buttonRow(rowIndex: Int) -> some View {
-        HStack(spacing: 0) {
+    func buttonRow(rowIndex: Int) -> some View {
+        LazyHStack(spacing: 0) {
             ForEach(buttons[rowIndex].indices, id: \.self) { columnIndex in
                 let button = buttons[rowIndex][columnIndex]
                 let backgroundColor = overrideButtonColor[button] ?? button.colorByType()
                 
-                if liveButtons[button] == true {
+                if visibleButtons[button] == true {
                     CalculatorButtonView(
                         button: button, displayValue: $displayValue,
                         backgroundColor: backgroundColor, viewModel: viewModel

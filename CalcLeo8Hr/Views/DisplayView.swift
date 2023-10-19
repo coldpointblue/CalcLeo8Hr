@@ -10,8 +10,8 @@ struct DisplayView: View {
     var body: some View {
         HStack(spacing: 0) {
             Text(displayValue)
-                .font(.system(size: numberFontSize))
                 .frame(maxWidth: .infinity, alignment: .trailing)
+                .font(.system(size: numberFontSize))
                 .background(CalcColor.display)
                 .padding(.trailing, indentRight)
                 .accessibilityIdentifier("displayValue") // For UI tests
@@ -20,7 +20,7 @@ struct DisplayView: View {
     }
 }
 
-struct DisplayViewStyle: ViewModifier {    
+struct DisplayViewStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(CalcColor.display)
