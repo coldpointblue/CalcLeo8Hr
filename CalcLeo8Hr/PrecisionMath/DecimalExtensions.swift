@@ -21,11 +21,17 @@ extension Decimal {
         return paddingCount > 0 ? String(repeating: " ", count: paddingCount) + formattedString : formattedString
     }
     
-    /// Whole part of the decimal, rounding down for positive numbers and rounding up for negatives
+    /// Whole part of decimal, rounding down positive numbers and rounding up negatives
     var wholePart: Self {
         var result = Decimal()
         var mutableSelf = self
         NSDecimalRound(&result, &mutableSelf, 0, self >= 0 ? .down : .up)
         return result
     }
+    
+    var asDouble : Double { NSDecimalNumber(decimal: self).doubleValue }
+}
+
+extension Double {
+    var asDecimal : Decimal { Decimal(string: String(self)) ?? Decimal(0) }
 }
