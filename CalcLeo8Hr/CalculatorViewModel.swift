@@ -5,8 +5,13 @@ class CalculatorViewModel: ObservableObject {
     @Published private(set) var model: CalculatorModel = CalculatorModel()
     @ObservedObject var configViewModel: ConfigurationViewModel = ConfigurationViewModel.shared
     
-    @Published private(set) var finalAnswer: Double = 0.0
+    @Published private(set) var finalAnswer: Decimal = 0.0
+    private var pendingOperation: Operation = .none
+    private var isNewNumber = false
     @Published var displayValue: String = "0"
+    
+    let zeroStr = "0"
+    let notYetImplemented = " operation not implemented"
     
     func handleButtonPress(button: CalculatorButton) throws {
         let notYetImplemented = " operation not implemented"
@@ -84,6 +89,9 @@ class CalculatorViewModel: ObservableObject {
     private func resetCalculator() {
         model.reset()
         finalAnswer = 0.0
+        pendingOperation = .none
+        isNewNumber = false
+        displayValue = zeroStr
     }
 }
 
