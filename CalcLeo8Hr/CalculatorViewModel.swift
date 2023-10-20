@@ -14,52 +14,75 @@ class CalculatorViewModel: ObservableObject {
     let notYetImplemented = " operation not implemented"
     
     func handleButtonPress(button: CalculatorButton) throws {
-        let notYetImplemented = " operation not implemented"
-        
-        // If "Error" is displayed, ignore all except for "AC"
-        guard displayValue != "Error" || (displayValue == "Error" && button == .standard(.clear)) else {
-            flashIgnore()
-            return
-        }
+        guard !isErorrIgnoringUnlessAC(button) else { return }
         
         switch button {
         case .standard(let str):
-            switch str {
-            case .clear:
-                displayValue = "0"
-            case .negate:
-                Logger.debugInfo("Negate" + notYetImplemented)
-            case .bitcoin:
-                throw GenericError.invalidOperation("Bitcoin web call" + notYetImplemented)
-            case .decimalPoint:
-                Logger.debugInfo("Decimal point" + notYetImplemented)
-            case .equal:
-                Logger.debugInfo("Equals" + notYetImplemented)
-            }
-            
+            try handleStandardButton(str)
         case .operation(let op):
-            switch op {
-            case .divide, .multiply, .subtract, .add:
-                Logger.debugInfo("Arithmetic" + notYetImplemented)
-            case .sine, .cosine:
-                Logger.debugInfo("\(op.symbol)" + notYetImplemented)
-            case .none:
-                Logger.debugInfo("None operation" + notYetImplemented)
-            }
+            try handleOperationButton(op)
         case .digit(let num):
-            switch num {
-            case .zero:
-                if displayValue != "0" { displayValue += button.description } else {
-                    flashIgnore()
-                }
-            default:
-                displayValue = (displayValue == "0") ? button.description : displayValue + button.description
-            }
+            handleDigitButton(num)
         }
     }
     
     func setDisplayValue(_ value: String) {
         displayValue = value
+    }
+    
+    // Private methods
+    
+    private func isErorrIgnoringUnlessAC(_ button: CalculatorButton) -> Bool {
+        // If "Error" is displayed, ignore all except for "AC"
+        guard displayValue != "Error" || (displayValue == "Error" && button == .standard(.clear)) else {
+            flashIgnore()
+            return true
+        }
+        
+        return false
+    }
+    
+    private func handleStandardButton(_ button: CalculatorButton.Standard) throws {
+        switch button {
+        case .clear:
+            resetCalculator()
+        case .negate:
+            if let displayNumInput = Decimal(string: displayValue), displayNumInput != 0 {
+                setGivenNumber(displayNumInput)
+                model.negate(.givenNumber)
+                finalAnswer = model.givenNumber
+                updateDisplayValue(finalAnswer)
+            } else { flashIgnore() }
+        case .bitcoin:
+            throw GenericError.invalidOperation("Bitcoin operation not yet implemented")
+        case .decimalPoint:
+            Logger.debugInfo("Decimal point" + notYetImplemented)
+        case .equal:
+            try computeFinalAnswer()
+        }
+    }
+    
+    private func handleOperationButton(_ operation: Operation) throws {
+        guard operation != .none else {
+            Logger.debugInfo("None operation" + notYetImplemented)
+            return
+        }
+        // placeholder for logic
+    }
+    
+    private func handleDigitButton(_ num :CalculatorButton.Digit) {
+        if !isNewNumber {
+            isNewNumber.toggle()
+            displayValue = zeroStr
+        }
+        switch num {
+        case .zero:
+            if displayValue != zeroStr { displayValue += num.rawValue } else {
+                flashIgnore()
+            }
+        default:
+            displayValue = (displayValue == zeroStr) ? num.rawValue : displayValue + num.rawValue
+        }
     }
     
     // Briefly display an underscore and then remove it
