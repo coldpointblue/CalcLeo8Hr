@@ -40,18 +40,8 @@ class CalculatorViewModel: ObservableObject {
     
     // Private methods
     
-    private func isErorrIgnoringUnlessAC(_ button: CalculatorButton) -> Bool {
-        // If "Error" is displayed, ignore all except for "AC"
-        guard displayValue != "Error" || (displayValue == "Error" && button == .standard(.clear)) else {
-            flashIgnore()
-            return true
-        }
-        
-        return false
-    }
-    
-    private func handleStandardButton(_ button: CalculatorButton.Standard) throws {
-        switch button {
+    private func handleStandardButton(_ standardTapped: CalculatorButton.Standard) throws {
+        switch standardTapped {
         case .clear:
             resetCalculator()
         case .negate:
@@ -70,8 +60,8 @@ class CalculatorViewModel: ObservableObject {
         }
     }
     
-    private func handleOperationButton(_ operation: Operation) throws {
-        guard operation != .none else {
+    private func handleOperationButton(_ operationTapped: Operation) throws {
+        guard operationTapped != .none else {
             Logger.debugInfo("None operation" + notYetImplemented)
             return
         }
