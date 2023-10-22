@@ -11,10 +11,15 @@ class CalculatorViewModel: ObservableObject {
     @Published var displayValue: String = "0"
     
     let zeroStr = "0"
+    let decimalPoint = "."
+    let errorStr = "Error"
     let notYetImplemented = " operation not implemented"
     
     func handleButtonPress(button: CalculatorButton) throws {
-        guard !isErorrIgnoringUnlessAC(button) else { return }
+        if displayValue == errorStr && button != .standard(.clear) {
+            flashIgnore()
+            return
+        }
         
         switch button {
         case .standard(let str):
@@ -26,8 +31,11 @@ class CalculatorViewModel: ObservableObject {
         }
     }
     
-    func setDisplayValue(_ value: String) {
-        displayValue = value
+    func updateDisplayFromDecimal(_ newDecimal: Decimal) {
+        if !displayValue.hasSuffix(decimalPoint) {
+            displayValue = (0 == newDecimal) ? zeroStr :
+            shortStringDecimal(newDecimal, maxCharacters: 16)
+        }
     }
     
     // Private methods
@@ -51,12 +59,12 @@ class CalculatorViewModel: ObservableObject {
                 setGivenNumber(displayNumInput)
                 model.negate(.givenNumber)
                 finalAnswer = model.givenNumber
-                updateDisplayValue(finalAnswer)
+                updateDisplayFromDecimal(finalAnswer)
             } else { flashIgnore() }
         case .bitcoin:
             throw GenericError.invalidOperation("Bitcoin operation not yet implemented")
         case .decimalPoint:
-            Logger.debugInfo("Decimal point" + notYetImplemented)
+            displayValue.contains(decimalPoint) ? flashIgnore() : (displayValue += decimalPoint)
         case .equal:
             try computeFinalAnswer()
         }
@@ -73,7 +81,7 @@ class CalculatorViewModel: ObservableObject {
     private func handleDigitButton(_ num :CalculatorButton.Digit) {
         if !isNewNumber {
             isNewNumber.toggle()
-            displayValue = zeroStr
+            if !displayValue.hasSuffix(decimalPoint) {displayValue = zeroStr }
         }
         switch num {
         case .zero:
@@ -95,8 +103,8 @@ class CalculatorViewModel: ObservableObject {
         }
     }
     
-    private func setGivenNumber(_ num: Double) {
-        model.givenNumber = num
+    private func setGivenNumber(_ numberTapped: Decimal) {
+        model.givenNumber = numberTapped
     }
     
     private func setOperation(_ operation: Operation) {
