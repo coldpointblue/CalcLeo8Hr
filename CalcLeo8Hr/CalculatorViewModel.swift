@@ -47,8 +47,7 @@ class CalculatorViewModel: ObservableObject {
             if let displayNumInput = Decimal(string: displayValue), displayNumInput != 0 {
                 setGivenNumber(displayNumInput)
                 model.negate(.givenNumber)
-                finalAnswer = model.givenNumber
-                updateDisplayFromDecimal(finalAnswer)
+                updateDisplayFromDecimal(model.givenNumber)
             } else { flashIgnore() }
         case .bitcoin:
             throw GenericError.invalidOperation("Bitcoin operation not yet implemented")
