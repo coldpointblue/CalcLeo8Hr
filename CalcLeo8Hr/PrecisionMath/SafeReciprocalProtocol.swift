@@ -22,7 +22,7 @@ extension SafeReciprocalProtocol {
     }
     
     /**
-     Safely compute Reciprocal
+     Safely compute Reciprocal returning 0 instead of NaN for division by zero.
      
      - Parameter value: Number whose reciprocal will be calculated
      - Returns: Reciprocal if the number is not zero, otherwise zero
