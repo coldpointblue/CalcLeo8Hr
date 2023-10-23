@@ -37,7 +37,8 @@ struct CalculatorModel {
         case .multiply:
             currentTotal *= givenNumber
         case .divide:
-            try handleDivision()
+            // try handlePreciseDivision()
+            currentTotal = try divideImprecise(dividend: currentTotal, divisor: givenNumber)
         case .sine:
             currentTotal = sin(givenNumber.asDouble).asDecimal
         case .cosine:
@@ -47,7 +48,7 @@ struct CalculatorModel {
         }
     }
     
-    private mutating func handleDivision() throws {
+    private mutating func handlePreciseDivision() throws {
         do {
             let result = try CalculationFunctions.preciseDivision(currentTotal, givenNumber)
             currentTotal = result.asTuple.0
