@@ -27,7 +27,7 @@ extension Decimal {
     ///   - value: Decimal value to convert.
     ///   - maxCharacters: Maximum number of characters for output string.
     /// - Returns: String representing Decimal, truncated to `maxCharacters` length.
-    func fixedLength(_ maxCharacters: Int) -> String {
+    func fixedLengthFractionsStr(_ maxCharacters: Int) -> String {
         guard maxCharacters > 0, self != 0.0, !self.isNaN else {
             return (maxCharacters > 0) ? "0" : ""
         }
