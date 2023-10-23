@@ -60,15 +60,21 @@ struct CalculationFunctions {
         }
         
         let decimalPlaces = CalculationFunctions.decimalPlaces
-        let reciprocalOfDenominator = Decimal().safeReciprocal(denominator)
-        guard !reciprocalOfDenominator.isNaN else {
-            return PrecisionDivisionResult.error("Not a Number")
+        let integerCheck = numerator / denominator
+        var preciseCalculation: Decimal
+        
+        if (integerCheck == integerCheck.wholePart) {
+            preciseCalculation = integerCheck
+        } else {
+            let reciprocalOfDenominator = Decimal().safeReciprocal(denominator)
+            guard !reciprocalOfDenominator.isNaN else {
+                return PrecisionDivisionResult.error("Not a Number")
+            }
+            preciseCalculation = (numerator * reciprocalOfDenominator) // Division
         }
         
-        let preciseCalculation = (numerator * reciprocalOfDenominator) // Division
-        // Truncate to fixed decimals
-        let truncated = ((preciseCalculation * decimalPlaces).wholePart) / decimalPlaces
-        let resultFixedLength = truncated.digitsSeenPadded(CalculationFunctions.fixedDecimals)
+        let truncatedDecimalDiv = ((preciseCalculation * decimalPlaces).wholePart) / decimalPlaces
+        let resultFixedLength = truncatedDecimalDiv.fixedLengthFractionsStr(CalculationFunctions.fixedDecimals)
         
         return PrecisionDivisionResult.valid(preciseCalculation, resultFixedLength)
     }
