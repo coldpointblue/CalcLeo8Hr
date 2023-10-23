@@ -43,7 +43,7 @@ struct CalculatorModel {
         case .cosine:
             currentTotal = cos(givenNumber.asDouble).asDecimal
         case .none:
-            break // currentTotal = givenNumber?
+            currentTotal = givenNumber
         }
     }
     
