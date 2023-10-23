@@ -33,8 +33,7 @@ class CalculatorViewModel: ObservableObject {
     
     func updateDisplayFromDecimal(_ newDecimal: Decimal) {
         if !displayValue.hasSuffix(decimalPoint) {
-            displayValue = (0 == newDecimal) ? zeroStr :
-            shortStringDecimal(newDecimal, maxCharacters: 16)
+            displayValue = (0 == newDecimal) ? zeroStr : newDecimal.fixedLengthFractionsStr(CalculationFunctions.fixedDecimals)
         }
     }
     
@@ -54,6 +53,7 @@ class CalculatorViewModel: ObservableObject {
         case .bitcoin:
             throw GenericError.invalidOperation("Bitcoin operation not yet implemented")
         case .decimalPoint:
+            // Consider clear to begin new operation with point, while not zero shown?
             displayValue.contains(decimalPoint) ? flashIgnore() : (displayValue += decimalPoint)
         case .equal:
             try computeFinalAnswer()
