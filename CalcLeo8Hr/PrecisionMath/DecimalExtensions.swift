@@ -45,7 +45,7 @@ extension Decimal {
         let fractionalPart = absoluteValue - absoluteValue.wholePart
         // Early exit if no room for fractional part or fractionalPart is zero
         guard fractionalPart != 0 else {
-            return integerPartStr
+            return negativePrefix + integerPartStr
         }
         
         // Calculate available length for fractional part; +1 reserved for decimal point
