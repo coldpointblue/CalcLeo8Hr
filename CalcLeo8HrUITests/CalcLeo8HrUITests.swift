@@ -13,17 +13,23 @@ final class CalcLeo8HrUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testCalculatorButtons() throws {
+    func testAddOneAndTwoIsThree() throws {
         let app = XCUIApplication()
         app.launch()
         
-        app.buttons["1"].tap()
-        app.buttons["+"].tap()
-        app.buttons["2"].tap()
-        app.buttons["="].tap()
+        // Sequence of buttons to be tapped
+        let buttonTapSequence: [CalculatorButton] = [.digit(.one),  .operation(.add), .digit(.two), .standard(.equal)]
+        
+        // Tap the buttons
+        for button in buttonTapSequence {
+            let buttonSymbol = button.description
+            app.buttons[buttonSymbol].tap()
+        }
         
         let displayResult = app.staticTexts["displayValue"].label
-        XCTAssertEqual(displayResult, "12", "Arithmetic not yet implemented")
+        let expectedValue = "3"
+        
+        XCTAssertEqual(displayResult, "3", "1 plus 2 is  \(expectedValue) but got \(displayResult)")
     }
     
     func testExample() throws {

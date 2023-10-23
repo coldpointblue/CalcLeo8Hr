@@ -12,7 +12,7 @@ final class CalcLeo8HrTests: XCTestCase {
     }
     
     func testContentViewInitialization() {
-        let contentView = ContentView()
+        let contentView = ContentView(viewModel: CalculatorViewModel())
         XCTAssertNotNil(contentView)
     }
     
