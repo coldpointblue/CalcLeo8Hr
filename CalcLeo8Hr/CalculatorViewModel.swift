@@ -5,9 +5,7 @@ class CalculatorViewModel: ObservableObject {
     @Published private(set) var model: CalculatorModel = CalculatorModel()
     @ObservedObject var configViewModel: ConfigurationViewModel = ConfigurationViewModel.shared
     
-    @Published private(set) var finalAnswer: Decimal = 0.0
-    private var pendingOperation: Operation = .none
-    private var isNewNumber = false
+    private var isChainingOperations = false
     @Published var displayValue: String = "0"
     
     let zeroStr = "0"
@@ -73,10 +71,15 @@ class CalculatorViewModel: ObservableObject {
     }
     
     private func handleDigitButton(_ num :CalculatorButton.Digit) {
-        if !isNewNumber {
-            isNewNumber.toggle()
-            if !displayValue.hasSuffix(decimalPoint) {displayValue = zeroStr }
+        // Handle chaining operations and building new numbers
+        if isChainingOperations {
+            // Reset the isChainingOperations flag
+            isChainingOperations = false
+            
+            // Update displayValue to zero if it doesn't end with a decimal point
+            if !displayValue.hasSuffix(decimalPoint) { displayValue = zeroStr }
         }
+        
         switch num {
         case .zero:
             if displayValue != zeroStr { displayValue += num.rawValue } else {
