@@ -50,20 +50,35 @@ struct ConfigurationView: View {
 
 struct ConfigurationToggleButtonView: View {
     @ObservedObject var configViewModel: ConfigurationViewModel
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     private static let horizontalSpace: CGFloat = 36
     private static let normalSpacing: CGFloat = 16
     
+    private let filteredButtons = CalculatorButton.allCases.filter { $0 != .operation(.none) }
+    private var midpoint: Int {  return (1 + filteredButtons.count) / 2 }
+    
     var body: some View {
-        let filteredButtons = CalculatorButton.allCases.filter { $0 != .operation(.none) }
-        let midpoint = (1 + filteredButtons.count) / 2
-        
-        return LazyHStack(spacing: ConfigurationToggleButtonView.normalSpacing) {
-            ToggleStackView(buttonChoices: filteredButtons, range: 0..<midpoint, configViewModel: configViewModel)
-                .padding(.trailing, ConfigurationToggleButtonView.horizontalSpace)
-            Spacer()
-            ToggleStackView(buttonChoices: filteredButtons, range: midpoint..<filteredButtons.count, configViewModel: configViewModel)
-                .padding(.leading, ConfigurationToggleButtonView.horizontalSpace)
+        LazyVStack {
+            HStack {
+                ConditionalSpacer(horizontalSizeClass: horizontalSizeClass)
+                LazyHStack(spacing: ConfigurationToggleButtonView.normalSpacing) {
+                    ToggleStackView(buttonChoices: filteredButtons, range: 0..<midpoint, configViewModel: configViewModel)
+                        .padding(.trailing, ConfigurationToggleButtonView.horizontalSpace)
+                    Spacer()
+                    ToggleStackView(buttonChoices: filteredButtons, range: midpoint..<filteredButtons.count, configViewModel: configViewModel)
+                        .padding(.leading, ConfigurationToggleButtonView.horizontalSpace)
+                }
+                ConditionalSpacer(horizontalSizeClass: horizontalSizeClass)
+            }
         }
+    }
+}
+
+struct ConditionalSpacer: View {
+    let horizontalSizeClass: UserInterfaceSizeClass?
+    
+    var body: some View {
+        if horizontalSizeClass == .compact { Spacer(minLength: 0) }
     }
 }
 
