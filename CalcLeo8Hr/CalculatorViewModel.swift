@@ -85,9 +85,7 @@ class CalculatorViewModel: ObservableObject {
         
         switch num {
         case .zero:
-            if displayValue != zeroStr { displayValue += num.rawValue } else {
-                flashIgnore()
-            }
+            if displayValue == zeroStr { flashIgnore() } else { displayValue += num.rawValue }
         default:
             displayValue = (displayValue == zeroStr) ? num.rawValue : displayValue + num.rawValue
         }
