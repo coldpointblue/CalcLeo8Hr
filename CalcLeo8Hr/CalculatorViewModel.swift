@@ -8,6 +8,7 @@ class CalculatorViewModel: ObservableObject {
     private var isChainingOperations = false
     @Published var displayValue: String = "0"
     
+    let zeroDecimal = Decimal(0)
     let zeroStr = "0"
     let decimalPoint = "."
     let errorStr = "Error"
@@ -31,7 +32,7 @@ class CalculatorViewModel: ObservableObject {
     
     func updateDisplayFromDecimal(_ newDecimal: Decimal) {
         if !displayValue.hasSuffix(decimalPoint) {
-            displayValue = (0 == newDecimal) ? zeroStr : newDecimal.fixedLengthFractionsStr(CalculationFunctions.fixedDecimals)
+            displayValue = (zeroDecimal == newDecimal) ? zeroStr : newDecimal.fixedLengthFractionsStr(CalculationFunctions.fixedDecimals)
         } else {
             displayValue += zeroStr
         }
@@ -107,7 +108,7 @@ class CalculatorViewModel: ObservableObject {
     private func getDisplayDecimal()-> Decimal {
         guard let decimalShown = Decimal(string: displayValue) else {
             Logger.debugInfo("Display not Decimal value: \(displayValue)")
-            return Decimal(0)
+            return zeroDecimal
         }
         return decimalShown
     }
