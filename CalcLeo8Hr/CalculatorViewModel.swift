@@ -62,10 +62,11 @@ class CalculatorViewModel: ObservableObject {
     private func handleOperationButton(_ operationTapped: Operation) throws {
         guard operationTapped != .none else {  return }
         
-        model.givenNumber = getDisplayDecimal()
         if model.operation != .none {
             executePendingOperation()
         } else {
+            // Skip updating display
+            setGivenNumber(getDisplayDecimal())
             model.performOperation()
         }
         // Set new operation
