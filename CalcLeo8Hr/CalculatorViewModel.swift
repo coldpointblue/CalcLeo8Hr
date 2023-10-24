@@ -55,10 +55,7 @@ class CalculatorViewModel: ObservableObject {
             // Consider clear to begin new operation with point, while not zero shown?
             displayValue.contains(decimalPoint) ? flashIgnore() : (displayValue += decimalPoint)
         case .equal:
-            setGivenNumber(getDisplayDecimal())
-            model.performOperation()
-            model.operation = .none
-            updateDisplayFromDecimal(model.currentTotal)
+            executePendingOperation()
         }
     }
     
@@ -67,7 +64,7 @@ class CalculatorViewModel: ObservableObject {
         
         model.givenNumber = getDisplayDecimal()
         if model.operation != .none {
-            try executePendingOperation()
+            executePendingOperation()
         } else {
             model.performOperation()
         }
@@ -117,19 +114,14 @@ class CalculatorViewModel: ObservableObject {
     
     private func getDisplayDecimal()-> Decimal {
         guard let decimalShown = Decimal(string: displayValue) else {
-            Logger.log("Display not Decimal.")
+            Logger.debugInfo("Display not Decimal value: \(displayValue)")
             return Decimal(0)
         }
         return decimalShown
     }
     
-    private func executePendingOperation() throws {
-        // Get display into givenNumber as Decimal
-        if let decimalValue = Decimal(string: displayValue) {
-            model.givenNumber = decimalValue
-        } else {
-            Logger.debugInfo("Invalid decimal value: \(displayValue)")
-        }
+    private func executePendingOperation() {
+        setGivenNumber(getDisplayDecimal())
         model.performOperation()
         model.operation = .none
         updateDisplayFromDecimal(model.currentTotal)
