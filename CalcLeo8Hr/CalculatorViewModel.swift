@@ -19,13 +19,13 @@ class CalculatorViewModel: ObservableObject {
         }
         
         switch button {
-        case .standard(let str):
-            try handleStandardButton(str)
-        case .operation(let op):
-            guard op != .none else {  return }
-            try handleOperationButton(op)
-        case .digit(let num):
-            handleDigitButton(num)
+        case .standard(let standardButtonType):
+            try handleStandardButton(standardButtonType)
+        case .operation(let operationButtonType):
+            guard operationButtonType != .none else {  return }
+            try handleOperationButton(operationButtonType)
+        case .digit(let numberButtonType):
+            handleDigitButton(numberButtonType)
         }
     }
     
