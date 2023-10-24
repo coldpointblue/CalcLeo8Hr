@@ -4,22 +4,45 @@ import SwiftUI
 struct ConfigurationView: View {
     @ObservedObject var configViewModel: ConfigurationViewModel
     var viewModel: CalculatorViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Spacer()
-                ScrollView {
-                    ConfigurationToggleButtonView(configViewModel: configViewModel)
-                        .padding()
+        GeometryReader { geo in
+            NavigationView {
+                VStack {
+                    Spacer()
+                    ScrollView {
+                        ConfigurationToggleButtonView(configViewModel: configViewModel)
+                            .padding()
+                    }
+                    buttonSection(isLandscape: geo.size.width > geo.size.height)
                 }
-                Button("Reset") {
-                    configViewModel.resetAllButtonsLive()
-                }
-                .padding(.vertical)
+                .navigationTitle(LocalizedKey.buttonConfigurationSheetTitle.inUse)
             }
-            .navigationTitle(LocalizedKey.buttonConfigurationSheetTitle.inUse)
         }
+    }
+    
+    private func buttonSection(isLandscape: Bool) -> some View {
+        HStack {
+            Spacer().opacity(isLandscape ? 1 : 0)
+            resetButton()
+            if isLandscape {
+                Spacer()
+                doneButton()
+            }
+            Spacer().opacity(isLandscape ? 1 : 0)
+        }
+    }
+    
+    private func doneButton() -> some View {
+        Button("Done") { dismiss() }
+            .padding(.vertical)
+    }
+    
+    private func resetButton() -> some View {
+        Button("Reset") { configViewModel.resetAllButtonsLive() }
+            .padding(.vertical)
+            .disabled(configViewModel.visibleButtons.values.allSatisfy { $0 == true })
     }
 }
 
