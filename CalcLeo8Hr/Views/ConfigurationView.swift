@@ -5,6 +5,7 @@ struct ConfigurationView: View {
     @ObservedObject var configViewModel: ConfigurationViewModel
     var viewModel: CalculatorViewModel
     @Environment(\.dismiss) var dismiss
+    @State var isLandscape : Bool = UIDevice.current.orientation.isLandscape
     
     var body: some View {
         GeometryReader { geo in
@@ -15,7 +16,8 @@ struct ConfigurationView: View {
                         ConfigurationToggleButtonView(configViewModel: configViewModel)
                             .padding()
                     }
-                    buttonSection(isLandscape: geo.size.width > geo.size.height)
+                    .handleOrientationChange { self.isLandscape = $0 }
+                    buttonSection(isLandscape: isLandscape)
                 }
                 .navigationTitle(LocalizedKey.buttonConfigurationSheetTitle.inUse)
             }

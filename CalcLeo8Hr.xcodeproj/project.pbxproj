@@ -13,6 +13,7 @@
 		72064A342AD93311008B8DB3 /* CalculatorButtonsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A332AD93311008B8DB3 /* CalculatorButtonsError.swift */; };
 		72064A362AD93349008B8DB3 /* CalculatorGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A352AD93349008B8DB3 /* CalculatorGridView.swift */; };
 		72064A382AD933DB008B8DB3 /* CalculatorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72064A372AD933DB008B8DB3 /* CalculatorButtonView.swift */; };
+		722CA57D2AE86B6C00410D21 /* OrientationChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722CA57C2AE86B6C00410D21 /* OrientationChanges.swift */; };
 		723621262ADEBBE800444B66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 723621252ADEBBE800444B66 /* Localizable.strings */; };
 		723621282ADEBFC600444B66 /* LocalizedTextUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723621272ADEBFC600444B66 /* LocalizedTextUI.swift */; };
 		7236212B2ADED6AD00444B66 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7236212A2ADED6AD00444B66 /* AlertView.swift */; };
@@ -63,6 +64,7 @@
 		72064A332AD93311008B8DB3 /* CalculatorButtonsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonsError.swift; sourceTree = "<group>"; };
 		72064A352AD93349008B8DB3 /* CalculatorGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorGridView.swift; sourceTree = "<group>"; };
 		72064A372AD933DB008B8DB3 /* CalculatorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonView.swift; sourceTree = "<group>"; };
+		722CA57C2AE86B6C00410D21 /* OrientationChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationChanges.swift; sourceTree = "<group>"; };
 		723621252ADEBBE800444B66 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		723621272ADEBFC600444B66 /* LocalizedTextUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedTextUI.swift; sourceTree = "<group>"; };
 		7236212A2ADED6AD00444B66 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				72064A312AD932E6008B8DB3 /* DisplayView.swift */,
 				72978F122ADFDD39000E010F /* ConfigurationView.swift */,
 				72064A2F2AD932A5008B8DB3 /* CalcColor.swift */,
+				722CA57C2AE86B6C00410D21 /* OrientationChanges.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				723AB0B62ADE963B0063AEC6 /* SafeReciprocalProtocol.swift in Sources */,
 				723AB0B22ADE961A0063AEC6 /* DecimalExtensions.swift in Sources */,
 				72405F0A2AD7CE0C00A92BD7 /* CalculatorViewModel.swift in Sources */,
+				722CA57D2AE86B6C00410D21 /* OrientationChanges.swift in Sources */,
 				723AB0B42ADE96270063AEC6 /* CalculationFunctions.swift in Sources */,
 				723AB0AE2ADE95FC0063AEC6 /* StringExtensions.swift in Sources */,
 				72CED7E42AD6C3B2007DF702 /* Logging.swift in Sources */,
