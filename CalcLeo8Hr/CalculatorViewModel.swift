@@ -113,10 +113,9 @@ class CalculatorViewModel: ObservableObject {
     
     private func resetCalculator() {
         model.reset()
-        finalAnswer = 0.0
-        pendingOperation = .none
-        isNewNumber = false
-        displayValue = zeroStr
+        model.operation = .none
+        isChainingOperations = false
+        updateDisplayFromDecimal(0)
     }
 }
 
