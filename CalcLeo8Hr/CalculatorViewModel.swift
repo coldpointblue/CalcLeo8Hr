@@ -97,8 +97,8 @@ class CalculatorViewModel: ObservableObject {
         }
     }
     
-    private func setGivenNumber(_ numberTapped: Decimal) {
-        model.givenNumber = numberTapped
+    private func setGivenNumber(_ newNumber: Decimal) {
+        model.givenNumber = newNumber
     }
     
     private func setOperation(_ operation: Operation) {
