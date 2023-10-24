@@ -34,6 +34,8 @@ class CalculatorViewModel: ObservableObject {
     func updateDisplayFromDecimal(_ newDecimal: Decimal) {
         if !displayValue.hasSuffix(decimalPoint) {
             displayValue = (0 == newDecimal) ? zeroStr : newDecimal.fixedLengthFractionsStr(CalculationFunctions.fixedDecimals)
+        } else {
+            displayValue += zeroStr
         }
     }
     
