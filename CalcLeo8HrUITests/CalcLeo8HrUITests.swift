@@ -1,5 +1,7 @@
 import XCTest
 
+// Note: Comprehensive unit tests are needed to cover both normal and edge cases. i.e. Tests for calculator's basic arithmetic functions, tests for when .none is passed, etc.
+
 final class CalcLeo8HrUITests: XCTestCase {
     
     override func setUpWithError() throws {
