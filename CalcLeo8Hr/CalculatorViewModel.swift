@@ -23,6 +23,7 @@ class CalculatorViewModel: ObservableObject {
         case .standard(let str):
             try handleStandardButton(str)
         case .operation(let op):
+            guard op != .none else {  return }
             try handleOperationButton(op)
         case .digit(let num):
             handleDigitButton(num)
@@ -60,8 +61,6 @@ class CalculatorViewModel: ObservableObject {
     }
     
     private func handleOperationButton(_ operationTapped: Operation) throws {
-        guard operationTapped != .none else {  return }
-        
         if model.operation != .none {
             executePendingOperation()
         } else {
