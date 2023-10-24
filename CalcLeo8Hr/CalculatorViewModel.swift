@@ -63,11 +63,17 @@ class CalculatorViewModel: ObservableObject {
     }
     
     private func handleOperationButton(_ operationTapped: Operation) throws {
-        guard operationTapped != .none else {
-            Logger.debugInfo("None operation" + notYetImplemented)
-            return
+        guard operationTapped != .none else {  return }
+        
+        model.givenNumber = getDisplayDecimal()
+        if model.operation != .none {
+            try executePendingOperation()
+        } else {
+            model.performOperation()
         }
-        // placeholder for logic
+        // Set new operation
+        model.operation = operationTapped
+        isChainingOperations = true
     }
     
     private func handleDigitButton(_ num :CalculatorButton.Digit) {
@@ -109,9 +115,24 @@ class CalculatorViewModel: ObservableObject {
         model.operation = operation
     }
     
-    private func computeFinalAnswer() {
+    private func getDisplayDecimal()-> Decimal {
+        guard let decimalShown = Decimal(string: displayValue) else {
+            Logger.log("Display not Decimal.")
+            return Decimal(0)
+        }
+        return decimalShown
+    }
+    
+    private func executePendingOperation() throws {
+        // Get display into givenNumber as Decimal
+        if let decimalValue = Decimal(string: displayValue) {
+            model.givenNumber = decimalValue
+        } else {
+            Logger.debugInfo("Invalid decimal value: \(displayValue)")
+        }
         model.performOperation()
-        finalAnswer = model.currentTotal
+        model.operation = .none
+        updateDisplayFromDecimal(model.currentTotal)
     }
     
     private func resetCalculator() {
