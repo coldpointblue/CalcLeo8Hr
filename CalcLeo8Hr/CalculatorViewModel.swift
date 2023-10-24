@@ -57,7 +57,10 @@ class CalculatorViewModel: ObservableObject {
             // Consider clear to begin new operation with point, while not zero shown?
             displayValue.contains(decimalPoint) ? flashIgnore() : (displayValue += decimalPoint)
         case .equal:
-            try computeFinalAnswer()
+            setGivenNumber(getDisplayDecimal())
+            model.performOperation()
+            model.operation = .none
+            updateDisplayFromDecimal(model.currentTotal)
         }
     }
     
