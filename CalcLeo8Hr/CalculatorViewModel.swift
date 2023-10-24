@@ -11,7 +11,6 @@ class CalculatorViewModel: ObservableObject {
     let zeroStr = "0"
     let decimalPoint = "."
     let errorStr = "Error"
-    let notYetImplemented = " operation not implemented"
     
     func handleButtonPress(button: CalculatorButton) throws {
         if displayValue == errorStr && button != .standard(.clear) {
@@ -103,11 +102,6 @@ class CalculatorViewModel: ObservableObject {
     
     private func setGivenNumber(_ newNumber: Decimal) {
         model.givenNumber = newNumber
-    }
-    
-    private func setOperation(_ operation: Operation) {
-        model.performOperation()
-        model.operation = operation
     }
     
     private func getDisplayDecimal()-> Decimal {
