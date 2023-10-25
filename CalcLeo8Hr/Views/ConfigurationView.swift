@@ -1,3 +1,19 @@
+//
+//  ConfigurationView.swift
+//  Part of the CalcLeo8Hr™ product.
+//
+//  Language: Swift 5.0
+//  Developed on: Xcode, macOS 14.0
+//  Target Platform: iOS 15.6
+//
+//  Author: Hugo S. Diaz
+//  Created:  2023-10-11
+//  Repository: https://github.com/coldpointblue/CalcLeo8Hr
+//  Unique ID:  18CE3E7B-2370-4B69-B498-DEF58DFBC93A
+//
+//  License:
+//  CalcLeo8Hr is Copyright © 2023 Hugo S. Diaz. All rights reserved worldwide.
+
 import SwiftUI
 
 /// View for sheet to configure buttons via swiches

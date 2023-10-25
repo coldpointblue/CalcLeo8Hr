@@ -1,3 +1,19 @@
+//
+//  DecimalExtensions.swift
+//  Part of the CalcLeo8Hr™ product.
+//
+//  Language: Swift 5.0
+//  Developed on: Xcode, macOS 14.0
+//  Target Platform: iOS 15.6
+//
+//  Author: Hugo S. Diaz
+//  Created:  2023-10-11
+//  Repository: https://github.com/coldpointblue/CalcLeo8Hr
+//  Unique ID:  249D2CBE-3B2A-4E28-8B89-AF4A7678A632
+//
+//  License:
+//  CalcLeo8Hr is Copyright © 2023 Hugo S. Diaz. All rights reserved worldwide.
+
 import Foundation
 
 /// Extension for Decimal to handle precision and formatting

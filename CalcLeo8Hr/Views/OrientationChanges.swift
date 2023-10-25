@@ -1,3 +1,19 @@
+//
+//  OrientationChanges.swift
+//  Part of the CalcLeo8Hr™ product.
+//
+//  Language: Swift 5.0
+//  Developed on: Xcode, macOS 14.0
+//  Target Platform: iOS 15.6
+//
+//  Author: Hugo S. Diaz
+//  Created:  2023-10-11
+//  Repository: https://github.com/coldpointblue/CalcLeo8Hr
+//  Unique ID:  17AA7090-0F27-461F-8365-F077F0F1E2C6
+//
+//  License:
+//  CalcLeo8Hr is Copyright © 2023 Hugo S. Diaz. All rights reserved worldwide.
+
 import SwiftUI
 
 /// Easily trigger actions inside a view hierarchy on orientation changes

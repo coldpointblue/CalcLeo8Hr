@@ -1,3 +1,19 @@
+//
+//  CalcLeo8HrUITests.swift
+//  Part of the CalcLeo8Hr™ product.
+//
+//  Language: Swift 5.0
+//  Developed on: Xcode, macOS 14.0
+//  Target Platform: iOS 15.6
+//
+//  Author: Hugo S. Diaz
+//  Created:  2023-10-11
+//  Repository: https://github.com/coldpointblue/CalcLeo8Hr
+//  Unique ID:  D0615106-CDBF-4358-BC91-E34F55FB0D6B
+//
+//  License:
+//  CalcLeo8Hr is Copyright © 2023 Hugo S. Diaz. All rights reserved worldwide.
+
 import XCTest
 
 // Note: Comprehensive unit tests are needed to cover both normal and edge cases. i.e. Tests for calculator's basic arithmetic functions, tests for when .none is passed, etc.

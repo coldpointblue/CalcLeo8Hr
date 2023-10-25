@@ -1,3 +1,19 @@
+//
+//  CalcLeo8HrUITestsLaunchTests.swift
+//  Part of the CalcLeo8Hr™ product.
+//
+//  Language: Swift 5.0
+//  Developed on: Xcode, macOS 14.0
+//  Target Platform: iOS 15.6
+//
+//  Author: Hugo S. Diaz
+//  Created:  2023-10-11
+//  Repository: https://github.com/coldpointblue/CalcLeo8Hr
+//  Unique ID:  BDE94CC3-C241-48AB-9C8D-FC220BC84F2B
+//
+//  License:
+//  CalcLeo8Hr is Copyright © 2023 Hugo S. Diaz. All rights reserved worldwide.
+
 import XCTest
 
 final class CalcLeo8HrUITestsLaunchTests: XCTestCase {
