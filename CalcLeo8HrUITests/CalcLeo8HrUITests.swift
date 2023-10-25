@@ -3,42 +3,50 @@ import XCTest
 // Note: Comprehensive unit tests are needed to cover both normal and edge cases. i.e. Tests for calculator's basic arithmetic functions, tests for when .none is passed, etc.
 
 final class CalcLeo8HrUITests: XCTestCase {
+    let app = XCUIApplication()
     
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        XCUIDevice.shared.orientation = .landscapeLeft
+        
+        app.launch()
     }
     
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testAddOneAndTwoIsThree() throws {
-        let app = XCUIApplication()
-        app.launch()
-        
-        // Sequence of buttons to be tapped
-        let buttonTapSequence: [CalculatorButton] = [.digit(.one),  .operation(.add), .digit(.two), .standard(.equal)]
-        
-        // Tap the buttons
-        for button in buttonTapSequence {
+    /// Helper function to tap buttons
+    private func tapButtons(_ sequence: [CalculatorButton]) {
+        for button in sequence {
             let buttonSymbol = button.description
+            guard app.buttons[buttonSymbol].exists else {
+                XCTFail("Button \(buttonSymbol) not found")
+                return
+            }
             app.buttons[buttonSymbol].tap()
         }
-        
-        let displayResult = app.staticTexts["displayValue"].label
-        let expectedValue = "3"
-        
-        XCTAssertEqual(displayResult, "3", "1 plus 2 is  \(expectedValue) but got \(displayResult)")
     }
     
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    /// Helper function to fetch display value
+    private func fetchDisplayValue() -> String {
+        if app.staticTexts["displayValue"].exists {
+            return app.staticTexts["displayValue"].label
+        } else {
+            XCTFail("Display value not found")
+            return ""
+        }
+    }
+    
+    func testAddOneAndTwoIsThree() throws {
+        let buttonTapSequence: [CalculatorButton] = [.digit(.one),  .operation(.add),
+                                                     .digit(.two), .standard(.equal)]
+        
+        tapButtons(buttonTapSequence)
+        let displayResult = fetchDisplayValue()
+        let expectedValue = "3"
+        
+        XCTAssertEqual(displayResult, expectedValue, "1 plus 2 is \(expectedValue) but got \(displayResult)")
     }
     
     func testLaunchPerformance() throws {
