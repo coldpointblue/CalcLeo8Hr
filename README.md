@@ -82,7 +82,7 @@ CalcLeo8Hr is a calculator application that prioritizes code modularization and 
 
 - Mathematical algorithms are optimized for primary use-cases and precision.
 - Memory-efficient data structures like tuples are used.
-- Early exits are employed to efficiency and speed.
+- Early exits are employed for efficiency and speed.
 - Modular code is readable and modifyable.
 
 ---
