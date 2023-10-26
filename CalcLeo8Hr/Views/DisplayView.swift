@@ -39,6 +39,7 @@ struct DisplayView: View {
 struct DisplayViewStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .foregroundColor(CalcColor.text)
             .background(CalcColor.display)
             .padding(1)
             .border(CalcColor.display, width: 1)

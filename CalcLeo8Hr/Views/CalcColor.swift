@@ -26,6 +26,7 @@ struct CalcColor {
     static var activeColorScheme: ColorScheme = .default
     
     static var display: Color { activeColorScheme == .alternate ? .black : .white }
+    static var text: Color { activeColorScheme == .alternate ? .accentColor : .black }
     static var outside: Color { activeColorScheme == .alternate ? .white : .black }
     static var utility: Color { activeColorScheme == .alternate ? Color(.systemGray5) : Color(.systemGray) }
     static var digit: Color { activeColorScheme == .alternate ? Color(.systemGray4) : Color(.systemGray2) }
