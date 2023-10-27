@@ -32,31 +32,11 @@ final class CalcLeo8HrUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    /// Helper function to tap buttons
-    private func tapButtons(_ sequence: [CalculatorButton]) {
-        for button in sequence {
-            let buttonSymbol = button.description
-            guard app.buttons[buttonSymbol].exists else {
-                XCTFail("Button \(buttonSymbol) not found")
-                return
-            }
-            app.buttons[buttonSymbol].tap()
-        }
-    }
-    
-    /// Helper function to fetch display value
-    private func fetchDisplayValue() -> String {
-        if app.staticTexts["displayValue"].exists {
-            return app.staticTexts["displayValue"].label
-        } else {
-            XCTFail("Display value not found")
-            return ""
-        }
-    }
-    
     func testAddOneAndTwoIsThree() throws {
-        let buttonTapSequence: [CalculatorButton] = [.digit(.one),  .operation(.add),
-                                                     .digit(.two), .standard(.equal)]
+        let buttonTapSequence: [CalculatorButton] = [.digit(.one),
+                                                     .operation(.add),
+                                                     .digit(.two),
+                                                     .standard(.equal)]
         
         tapButtons(buttonTapSequence)
         let displayResult = fetchDisplayValue()
@@ -71,6 +51,32 @@ final class CalcLeo8HrUITests: XCTestCase {
             measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
+        }
+    }
+    
+    // MARK: - Helper Functions
+    
+    /// Helper function to tap buttons.
+    /// - Parameter sequence: A list of `CalculatorButton` that need to be tapped.
+    private func tapButtons(_ sequence: [CalculatorButton]) {
+        sequence.forEach { button in
+            let buttonSymbol: String = button.description
+            guard app.buttons[buttonSymbol].exists else {
+                XCTFail("Button \(buttonSymbol) not found")
+                return
+            }
+            app.buttons[buttonSymbol].tap()
+        }
+    }
+    
+    /// Helper function to fetch display value from UI.
+    /// - Returns: The displayed string value.
+    private func fetchDisplayValue() -> String {
+        if app.staticTexts["displayValue"].exists {
+            return app.staticTexts["displayValue"].firstMatch.label
+        } else {
+            XCTFail("Display value not found")
+            return ""
         }
     }
 }
