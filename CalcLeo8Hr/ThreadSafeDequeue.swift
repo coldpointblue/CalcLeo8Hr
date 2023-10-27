@@ -1,5 +1,5 @@
 //
-//  Thread-SafeDequeue.swift
+//  ThreadSafeDequeue.swift
 //  Part of the CalcLeo8Hr™ product.
 //
 //  Language: Swift 5.0

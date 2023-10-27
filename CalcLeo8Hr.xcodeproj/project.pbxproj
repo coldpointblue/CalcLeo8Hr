@@ -16,14 +16,14 @@
 		722CA57D2AE86B6C00410D21 /* OrientationChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722CA57C2AE86B6C00410D21 /* OrientationChanges.swift */; };
 		722DE54E2AEB8F6300FF6835 /* ThreadSafeQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE54D2AEB8F6300FF6835 /* ThreadSafeQueue.swift */; };
 		722DE5502AEBC95600FF6835 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CED7E32AD6C3B2007DF702 /* Logging.swift */; };
-		722DE5522AEBE3AD00FF6835 /* Thread-SafeDequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE5512AEBE3AD00FF6835 /* Thread-SafeDequeue.swift */; };
-		722DE5532AEBE3AD00FF6835 /* Thread-SafeDequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE5512AEBE3AD00FF6835 /* Thread-SafeDequeue.swift */; };
+		722DE5522AEBE3AD00FF6835 /* ThreadSafeDequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE5512AEBE3AD00FF6835 /* ThreadSafeDequeue.swift */; };
+		722DE5532AEBE3AD00FF6835 /* ThreadSafeDequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE5512AEBE3AD00FF6835 /* ThreadSafeDequeue.swift */; };
 		722DE5552AEBE53300FF6835 /* ButtonTapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE5542AEBE53300FF6835 /* ButtonTapService.swift */; };
 		722DE5572AEBE53900FF6835 /* ButtonTapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE5542AEBE53300FF6835 /* ButtonTapService.swift */; };
 		722DE5582AEBE70300FF6835 /* ThreadSafeQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE54D2AEB8F6300FF6835 /* ThreadSafeQueue.swift */; };
 		722DE5592AEBE78D00FF6835 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CED7E32AD6C3B2007DF702 /* Logging.swift */; };
 		722DE55A2AEBE7C400FF6835 /* ThreadSafeQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE54D2AEB8F6300FF6835 /* ThreadSafeQueue.swift */; };
-		722DE55B2AEBE83500FF6835 /* Thread-SafeDequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE5512AEBE3AD00FF6835 /* Thread-SafeDequeue.swift */; };
+		722DE55B2AEBE83500FF6835 /* ThreadSafeDequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722DE5512AEBE3AD00FF6835 /* ThreadSafeDequeue.swift */; };
 		723621262ADEBBE800444B66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 723621252ADEBBE800444B66 /* Localizable.strings */; };
 		723621282ADEBFC600444B66 /* LocalizedTextUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723621272ADEBFC600444B66 /* LocalizedTextUI.swift */; };
 		7236212B2ADED6AD00444B66 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7236212A2ADED6AD00444B66 /* AlertView.swift */; };
@@ -76,7 +76,7 @@
 		72064A372AD933DB008B8DB3 /* CalculatorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonView.swift; sourceTree = "<group>"; };
 		722CA57C2AE86B6C00410D21 /* OrientationChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationChanges.swift; sourceTree = "<group>"; };
 		722DE54D2AEB8F6300FF6835 /* ThreadSafeQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThreadSafeQueue.swift; path = CalcLeo8Hr/ThreadSafeQueue.swift; sourceTree = SOURCE_ROOT; };
-		722DE5512AEBE3AD00FF6835 /* Thread-SafeDequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread-SafeDequeue.swift"; sourceTree = "<group>"; };
+		722DE5512AEBE3AD00FF6835 /* ThreadSafeDequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeDequeue.swift; sourceTree = "<group>"; };
 		722DE5542AEBE53300FF6835 /* ButtonTapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ButtonTapService.swift; path = CalcLeo8Hr/ButtonTapService.swift; sourceTree = SOURCE_ROOT; };
 		723621252ADEBBE800444B66 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		723621272ADEBFC600444B66 /* LocalizedTextUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedTextUI.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 				72405F092AD7CE0C00A92BD7 /* CalculatorViewModel.swift */,
 				722DE5542AEBE53300FF6835 /* ButtonTapService.swift */,
 				722DE54D2AEB8F6300FF6835 /* ThreadSafeQueue.swift */,
-				722DE5512AEBE3AD00FF6835 /* Thread-SafeDequeue.swift */,
+				722DE5512AEBE3AD00FF6835 /* ThreadSafeDequeue.swift */,
 				723AB0B72ADE970D0063AEC6 /* PrecisionMath */,
 				72CED7E12AD6C3A1007DF702 /* ErrorHandling.swift */,
 				72CED7E32AD6C3B2007DF702 /* Logging.swift */,
@@ -369,7 +369,7 @@
 				72064A342AD93311008B8DB3 /* CalculatorButtonsError.swift in Sources */,
 				722DE54E2AEB8F6300FF6835 /* ThreadSafeQueue.swift in Sources */,
 				72405F082AD7CDF000A92BD7 /* CalculatorModel.swift in Sources */,
-				722DE5522AEBE3AD00FF6835 /* Thread-SafeDequeue.swift in Sources */,
+				722DE5522AEBE3AD00FF6835 /* ThreadSafeDequeue.swift in Sources */,
 				72064A382AD933DB008B8DB3 /* CalculatorButtonView.swift in Sources */,
 				72405F0C2AD8090800A92BD7 /* OperationEnum.swift in Sources */,
 				7236212B2ADED6AD00444B66 /* AlertView.swift in Sources */,
@@ -397,7 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72CED7C92AD66D24007DF702 /* CalcLeo8HrTests.swift in Sources */,
-				722DE5532AEBE3AD00FF6835 /* Thread-SafeDequeue.swift in Sources */,
+				722DE5532AEBE3AD00FF6835 /* ThreadSafeDequeue.swift in Sources */,
 				722DE5582AEBE70300FF6835 /* ThreadSafeQueue.swift in Sources */,
 				722DE5592AEBE78D00FF6835 /* Logging.swift in Sources */,
 			);
@@ -415,7 +415,7 @@
 				72CED7D32AD66D24007DF702 /* CalcLeo8HrUITests.swift in Sources */,
 				723F738F2AE6B08E00A1F360 /* CalculatorButton.swift in Sources */,
 				72CED7D52AD66D24007DF702 /* CalcLeo8HrUITestsLaunchTests.swift in Sources */,
-				722DE55B2AEBE83500FF6835 /* Thread-SafeDequeue.swift in Sources */,
+				722DE55B2AEBE83500FF6835 /* ThreadSafeDequeue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
